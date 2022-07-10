@@ -192,7 +192,7 @@ mjx-container[display="true"] + br {
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-schedule"><a href="/schedule/" rel="section"><i class="fa fa-calendar fa-fw"></i>日程表</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li><li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
   </ul>
 </nav>
 
@@ -235,9 +235,14 @@ mjx-container[display="true"] + br {
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">日志</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
@@ -279,6 +284,149 @@ mjx-container[display="true"] + br {
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/10/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Emil Jiang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录一些东西">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 记录一些东西">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/07/10/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/" class="post-title-link" itemprop="url">自学西瓜书1：回归</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-07-10 22:01:55 / 修改时间：22:04:38" itemprop="dateCreated datePublished" datetime="2022-07-10T22:01:55+08:00">2022-07-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="线性回归-linear-regression">1. 线性回归 (Linear Regression)</h2>
+<p>  线性回归想必大家都不陌生，早在高中的时候就已经有接触过相关问题。飞燕还记得高中的时候一道线性回归的题值10分，结果算错了就全错了，印象特别深刻。高中的时候老师给出的线性回归表达式有两种： <span class="math display">\[
+\left\{
+\begin{aligned}
+\hat{b} &amp;= \frac{\sum\limits_{i = 1}^{n}(x_i-\overline{x})(y_i-\overline{y})}{\sum\limits_{i = 1}^{n}(x_i-\overline{x})^2} = \frac{\sum\limits_{i = 1}^{n}x_iy_i-n\mathop{\overline{x}}\overline{y}}{\sum\limits_{i = 1}^{n}x_i^2-n\overline{x}^2}\\\hat{a} &amp;= \overline{y}-\hat{b}\overline{x}\tag{1}  
+\end{aligned}
+\right.
+\]</span> <span class="math display">\[y = \hat{b}x+\hat{a}\tag{2}\]</span> （高中的时候纯手算这个真的是噩梦啊） 这是一维自变量的最小二乘法表示公式，若x为向量<span class="math display">\[ \boldsymbol{x} = (x_1,x_2,...,x_n) \]</span> 则(2)式可重写为 <span class="math display">\[ f(\boldsymbol{x}) = w_1x_1+w_2x_2+......+w_nx_n+b \]</span> 用向量法表示为 <span class="math display">\[ f(\boldsymbol{x}) = \boldsymbol{w}^T\boldsymbol{x} + b\]</span> 这就是线性回归最终得到的拟合函数表达式。其中我参数b为误差，通常服从正态分布。将其标准化之后可得 <span class="math display">\[ \frac{b-\mu}{\sigma}\sim N(0, 1)\]</span> 运用参数估计中的极大似然估计（MLE）有 <span class="math display">\[
+L(\boldsymbol{w}) = \prod\limits_{i = 1}^{n}p(y^{(i)}|x^{(i)};w) = \prod\limits_{i = 1}^{n} \frac{1}{\sqrt{2\pi}}e^-\frac{(y^{(i)}-\boldsymbol{w}^Tx^{(i)})}{2}^2
+\]</span> 为了计算方便，我们常常将上述等式取对计算 <span class="math display">\[
+    l(\boldsymbol{w}) = n\ln\frac{1}{\sqrt{2\pi}}-\frac{1}{2}\sum\limits_{i = 1}^{n}(y^{(i)}-\boldsymbol{w}^Tx^{(i)})^2
+\]</span> 该式中减号之前的部分为常数，接下来计算中可不考虑。故当<span class="math inline">\(l(\boldsymbol{w})\)</span> 取最大时，只需要对目标函数求最小值即可 <span class="math display">\[
+loss(\hat{y_i},y_i) = J(\boldsymbol{w}) = \frac{1}{2}\sum\limits_{i = 1}^{n}(y^{(i)}-\boldsymbol{w}^Tx^{(i)})^2
+\]</span> 这个式子其实就是今后常常会用到的模型性能度量指标之一——均方误差，通常要使其最小。也可以将上式写为矩阵式： <span class="math display">\[
+\boldsymbol{\hat{w}^*} = \mathop{argmin}\limits_{\boldsymbol{\hat{w}}}(\boldsymbol{y}-\boldsymbol{\hat{w}}\boldsymbol{X})^T(\boldsymbol{y}-\boldsymbol{\hat{w}}\boldsymbol{X})
+\]</span> 通过高中知识可知，要求一个函数的最值或极值常用方法为求导，在导函数等于0处的驻点逐一判断是否为最值获极值。 那么我们可以令<span class="math inline">\(f(\boldsymbol{\hat{w}}) = (\boldsymbol{y}-\boldsymbol{\hat{w}}\boldsymbol{X})^T(\boldsymbol{y}-\boldsymbol{\hat{w}}\boldsymbol{X})\)</span>,并对<span class="math inline">\(\boldsymbol{\hat{w}}\)</span>求偏导并令其等于0 <span class="math display">\[
+\frac{\partial f}{\partial \boldsymbol{\hat{w}}} = 2\boldsymbol{X}^T(\boldsymbol{X}\boldsymbol{\hat{w}}-\boldsymbol{y}) = 0
+\]</span> 若矩阵<span class="math inline">\((\boldsymbol{XX}^T)\)</span>满秩，则上式可解得 <span class="math display">\[
+\boldsymbol{\hat{w}}^* = (\boldsymbol{X^TX})^{-1}\boldsymbol{X}^T\boldsymbol{y}
+\]</span> 这也是最小二乘法的矩阵表达形式。 <strong>小结：</strong> （1）线性回归的loss函数可以为均方误差，其表达式为 <span class="math display">\[
+loss(\hat{y_i},y_i) = J(\boldsymbol{w}) = \frac{1}{2}\sum\limits_{i = 1}^{n}(y^{(i)}-\boldsymbol{w}^Tx^{(i)})^2
+\]</span> （2）将均方误差写为矩阵式并对<span class="math inline">\(\boldsymbol{\hat{w}}\)</span>求偏导等于零可以得到最小二乘法的矩阵式 <span class="math display">\[
+\boldsymbol{\hat{w}}^* = (\boldsymbol{X^TX})^{-1}\boldsymbol{X}^T\boldsymbol{y}
+\]</span> 将其带入最终的拟合函数表达式可得 <span class="math display">\[
+f(\boldsymbol{\hat{x}}_i) = \boldsymbol{\hat{x}}_i(\boldsymbol{X^TX})^{-1}\boldsymbol{X}^T\boldsymbol{y}
+\]</span> 这就是线性回归最终所学得的模型。 （3）线性回归是最简单的回归形式之一，但其有丰富的变化，并且在处理一些简单的回归问题上可以得到较好的效果。另外，线性回归也是其他很多回归的基础，比如接下来要介绍的Logistic回归。 ## 2. Logistic回归 (Logistic Regression)    Logistic回归是在线性回归的基础上，将线性回归所得到的结果映射到一个非线性空间当中。为了达成这个目的，我们需要引入一种类似激活函数的东西。在Logistic回归里，这个函数就是大名鼎鼎的Sigmoid函数。 Sigmoid函数表达式为 <span class="math display">\[
+y = \frac{1}{1+e^{-z}}
+\]</span> Sigmoid函数图像如下 <img src="https://img-blog.csdnimg.cn/20201114135755928.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTc3MjgzOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="Sigmoid函数图像"> 在Sigmoid函数表达式中，y就是我们最后的输出结果，若y为正例的概率，则1-y则为反例概率，二者相比再取对的结果被称为“对数几率”。 <span class="math display">\[
+\ln\frac{y}{1-y}
+\]</span> 上式与线性回归的结果相结合可有 <span class="math display">\[
+\ln\frac{y}{1-y} = \boldsymbol{\theta}^T\boldsymbol{x}+b
+\]</span> 该式输出的结果就是”对数几率”，同时也是Logistic回归的输出结果。 那么问题来了，式中参数<span class="math inline">\(\boldsymbol{\theta}\)</span>如何得到呢？其实我们可以照葫芦画瓢，参照线性回归的形式，使用MLE来进行参数估计。 <span class="math display">\[
+L(\boldsymbol{\theta}) = \prod\limits_{i = 1}^{n}p(y = 1|\boldsymbol{x})^{y^{(i)}} p(y = 0|\boldsymbol{x})^{(1-y^{(i)})}
+\]</span> 取对化简有 <span class="math display">\[
+l(\boldsymbol{\theta}) = \sum\limits_{i = 1}^{n}(-y^{(i)}\boldsymbol{\theta}^T\boldsymbol{\hat{x_i}}+\ln(1+e^{\boldsymbol{\theta}^T\boldsymbol{\hat{x_i}}}))
+\]</span> 这就是Logistic回归当<span class="math inline">\(y\in(0,1)\)</span>时的目标函数（loss函数），同样，对其求偏导等于0后可以有最终函数的表达式。 如果y为离散型变量，即 <span class="math display">\[
+y = \left\{
+\begin{aligned}
+-1~~~~~当x_i为反例\\1~~~~~当x_i为正例
+\end{aligned}
+\right.
+\]</span> <span class="math display">\[
+\hat{y_i} = \left\{
+    \begin{aligned}
+        p_i~~~~~y_i = 1\\
+        -p_i~~~~~y_i = -1
+    \end{aligned}
+\right.
+\]</span> 令<span class="math inline">\(p_i = \frac{1}{1+e^{-\boldsymbol{\theta}^Tx_i}}\)</span>，同样通过极大似然估计有 <span class="math display">\[
+loss(y_i,\hat{y_i}) = \sum\limits_{i = 1}^{n}\ln(1+e^{-y_i\boldsymbol{\theta}^Tx_i})
+\]</span> <strong>小结：</strong> （1）Logistic时以线性回归为基础，将线性回归的结果通过Sigmoid函数映射到非线性空间中的方法。 （2）Logistic回归的目标函数为 <span class="math display">\[
+loss(y_i,\hat{y_i}) = \sum\limits_{i = 1}^{n}(-y^{(i)}\boldsymbol{\theta}^T\boldsymbol{\hat{x_i}}+\ln(1+e^{\boldsymbol{\theta}^T\boldsymbol{\hat{x_i}}})
+\]</span> （3）Logistic回归常用于分类问题，可以直接对分类可能性建模，不需要实现假设数据分析。同时Logistic回归给出的结果并不是具体的“类别”，而是该样本属于该类别的近似概率。此外，Logistic回归的目标函数具有很好的数学性质，在很多优化算法都可以直接求最优解。 ## 3. 岭回归与LASSO回归 (Ridge Regression and LASSO Regression)   岭回归与LASSO回归都是再线性回归的基础上加上一个正则项，其目的是为了<strong>防止回归模型过拟合</strong>。其中LASSO回归加上的是L1正则项(L2-Normalization)，岭回归加上的是L2正则项(L2-Noarmalization)。我们来看看这两个的目标函数。 <strong>岭回归：</strong> <span class="math display">\[
+J(\boldsymbol{\theta}) = \frac{1}{2}\sum\limits_{i = 1}^{n}(y^{(i)}-\boldsymbol{\theta}^Tx^{(i)})^2+\lambda\sum\limits_{j=1}^{n}\boldsymbol{\theta_j}^2
+\]</span> <strong>LASSO回归：</strong> <span class="math display">\[
+J(\boldsymbol{\theta}) = \frac{1}{2}\sum\limits_{i = 1}^{n}(y^{(i)}-\boldsymbol{\theta}^Tx^{(i)})^2+\lambda\sum\limits_{j=1}^{n}|\boldsymbol{\theta_j}|
+\]</span> 其中<span class="math inline">\(\lambda\)</span>表示正则项参与度，是一个超参数，需要用梯度下降等方法调参。关于梯度下降，飞燕将在之后的番外篇里详细讲一下这个东西，因为这个东西真的非常非常重要！ <strong>正则化防止过拟合的原因</strong> 这里以岭回归为例，为了描述方便，我们将岭回归的目标函数简写为 <span class="math display">\[
+C = C_0 + \lambda\sum\boldsymbol{\theta}^2
+\]</span> 对其求偏导 <span class="math display">\[
+\frac{\partial C}{\partial \theta} = \frac{\partial C_0}{\partial \theta} + 2\lambda\sum\boldsymbol{\theta}
+\]</span> 我们在使用梯度下降(这里以SGD为例)确定超参数<span class="math inline">\(\lambda\)</span>的时候就有 <span class="math display">\[
+\boldsymbol{\theta_i} = \boldsymbol{\theta_i}-\alpha\frac{\partial C_0}{\partial \theta}-2\alpha\lambda\boldsymbol{\theta_i} = (1-2\lambda)\boldsymbol{\theta_i}-\alpha\frac{\partial C_0}{\partial \theta}
+\]</span> 其中<span class="math inline">\(\alpha\)</span>为学习率。因为<span class="math inline">\(\lambda&gt;0\)</span>，所以称上述方法为权重衰减，可以有效减小系数。系数减小了，单个特征影响总体的因素就变小了，最后结果就基本不会出现因为一个特征改变而大幅改变的情况，因此可以有效防止过拟合。</p>
+<p><strong>下期预告：</strong> 决策树与随机森林</p>
+<p><strong>参考文献</strong> - [1] 周志华 《机器学习》 - [2] <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV164411b7dx?p=1">[中英字幕]吴恩达机器学习系列课程</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/10/%E5%8D%9A%E5%AE%A2%E6%B5%8B%E8%AF%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -309,7 +457,16 @@ mjx-container[display="true"] + br {
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2022-07-10 20:39:57 / 修改时间：21:48:13" itemprop="dateCreated datePublished" datetime="2022-07-10T20:39:57+08:00">2022-07-10</time>
+      <time title="创建时间：2022-07-10 20:39:57 / 修改时间：21:58:40" itemprop="dateCreated datePublished" datetime="2022-07-10T20:39:57+08:00">2022-07-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%8D%9A%E5%AE%A2%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">博客测试</span></a>
+        </span>
     </span>
 
   
