@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha256-DfWjNxDkM94fVBWx1H5BMMp0Zq7luBlV8QRcSES7s+0=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.12.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="决策树是传统机器学习中很重要的基本算法之一。决策树所需要的训练样本少，构建思路简单，训练所得的模型也可以通过graphviz和matplotlib等工具进行可视化操作，因此我们可以非常直观的对其进行解释。 1. 简介 说到底，决策树还不是树，是树就是if-else语句。(bushi)    决策树是很典型的判别模型，常用的决策树有三种，分别是ID3树，C4.5树，CART树。三种类型的树的目标">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自学西瓜书2：决策树">
+<meta property="og:url" content="http://example.com/2022/07/10/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%86%B3%E7%AD%96%E6%A0%91/index.html">
+<meta property="og:site_name" content="记录一些东西">
+<meta property="og:description" content="决策树是传统机器学习中很重要的基本算法之一。决策树所需要的训练样本少，构建思路简单，训练所得的模型也可以通过graphviz和matplotlib等工具进行可视化操作，因此我们可以非常直观的对其进行解释。 1. 简介 说到底，决策树还不是树，是树就是if-else语句。(bushi)    决策树是很典型的判别模型，常用的决策树有三种，分别是ID3树，C4.5树，CART树。三种类型的树的目标">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210125220021366.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTc3MjgzOQ==,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210125220021322.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTc3MjgzOQ==,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210125220234785.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTc3MjgzOQ==,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20210125220234659.png#pic_center">
+<meta property="article:published_time" content="2022-07-10T14:13:45.000Z">
+<meta property="article:modified_time" content="2022-07-10T14:15:25.318Z">
+<meta property="article:author" content="Emil Jiang">
+<meta property="article:tag" content="决策树">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20210125220021366.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTc3MjgzOQ==,size_16,color_FFFFFF,t_70#pic_center">
+
+
+<link rel="canonical" href="http://example.com/2022/07/10/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%86%B3%E7%AD%96%E6%A0%91/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/07/10/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%86%B3%E7%AD%96%E6%A0%91/","path":"2022/07/10/机器学习-决策树/","title":"自学西瓜书2：决策树"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>自学西瓜书2：决策树 | 记录一些东西</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">记录一些东西</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">1. 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#id3%E7%AE%97%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">2. ID3算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%A1%E6%81%AF%E7%86%B5information-entropy"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 信息熵(Information Entropy)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E7%86%B5conditional-entropy"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 条件熵(Conditional Entropy)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kl%E6%95%A3%E5%BA%A6%E4%B8%8E%E4%BF%A1%E6%81%AF%E5%A2%9E%E7%9B%8Akullback-leibler-divergence-information-gain"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 KL散度与信息增益(Kullback-Leibler Divergence &amp; Information Gain)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#id3%E5%86%B3%E7%AD%96%E6%A0%91"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 ID3决策树</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#c4.5%E7%AE%97%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">3. C4.5算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B-1"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 简介</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cart%E7%AE%97%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">4. CART算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B-2"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%8E%E8%AE%B0"><span class="nav-number">4.2.</span> <span class="nav-text">后记</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-number">5.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Emil Jiang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/10/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%86%B3%E7%AD%96%E6%A0%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Emil Jiang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录一些东西">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="自学西瓜书2：决策树 | 记录一些东西">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          自学西瓜书2：决策树
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-07-10 22:13:45 / 修改时间：22:15:25" itemprop="dateCreated datePublished" datetime="2022-07-10T22:13:45+08:00">2022-07-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>决策树是传统机器学习中很重要的基本算法之一。决策树所需要的训练样本少，构建思路简单，训练所得的模型也可以通过graphviz和matplotlib等工具进行可视化操作，因此我们可以非常直观的对其进行解释。</p>
+<h2 id="简介">1. 简介</h2>
+<p>说到底，决策树还不是树，是树就是if-else语句。(bushi) <img src="https://img-blog.csdnimg.cn/20210125220021366.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTc3MjgzOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">   决策树是很典型的判别模型，常用的决策树有三种，分别是ID3树，C4.5树，CART树。三种类型的树的目标函数分别为互信息(Mutual Information)，互信息率(Mutual Information Ratio)和Gini系数(Gini Coefficient)。其中互信息在决策树中也常被成为信息增益，其实后者是前者的无偏估计，二者在决策树算法中是等效的。</p>
+<h2 id="id3算法">2. ID3算法</h2>
+<h3 id="信息熵information-entropy">2.1 信息熵(Information Entropy)</h3>
+<p>话不多说直接上定义式 <span class="math display">\[
+H(\boldsymbol{x}) = -\sum\limits_{i=1}^{n}p_i\log p_i
+\]</span>   信息熵越大，说明该事件包含的信息量越多，也就越难发生。举个不太恰当的例子，比如美国突然亡了，这件事情包含的信息量很大，所以短时间内不太容易发生；又比如你看完这篇文章会点个赞，这件事情包含的信息量比较小，所以很容易发生(doge)。</p>
+<h3 id="条件熵conditional-entropy">2.2 条件熵(Conditional Entropy)</h3>
+<p>条件熵可以类比条件概率来理解，其定义式为: <span class="math display">\[
+H(Y|X) = H(X,Y)-H(X) = -\sum\limits_{x，y}p(x,y)\log(y|x)
+\]</span>   条件熵是推导出互信息的重要手段之一。关于熵的详细来源和推导可以参见香农著名的论文《A Mathematical Theory of Communication》</p>
+<h3 id="kl散度与信息增益kullback-leibler-divergence-information-gain">2.3 KL散度与信息增益(Kullback-Leibler Divergence &amp; Information Gain)</h3>
+<p>  KL散度又叫相对熵，是度量两个概率分布之间距离的指标。设有两个概率分布P(X), Q(X), 则KL散度的定义式为 <span class="math display">\[
+D(P||Q) = \sum\limits_xp(x)\log\frac{p(x)}{q(x)}
+\]</span> 显然当P(X) = Q(X)时D(P||Q) = 0，因为此时P(X)和Q(X)为同一分布，距离为0。   信息增益的定义为两个随机变量X,Y的联合分布和边缘分布的KL散度。定义式如下 <span class="math display">\[
+I(X,Y) = \sum\limits_{x,y}p(x,y)\log\frac{p(x,y)}{p(x)p(y)}
+\]</span> 当且仅当P(X)，Q(X)相互独立时I(X,Y) = 0。另外，信息增益还可以根据信息熵和条件熵得出，其定义式为 <span class="math display">\[
+I(X,Y) = H(X)+H(Y)-H(X,Y) = H(X)-H(X|Y)
+\]</span> 跟条件概率一样，用一张图能更好理解信息增益 <img src="https://img-blog.csdnimg.cn/20210125220021322.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTc3MjgzOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<h3 id="id3决策树">2.4 ID3决策树</h3>
+<p>  ID3决策树的叶节点就是根据信息增益来确定的，每一层对所有未被选择所有属性计算信息增益，选出最大的一个作为该层的叶节点。以西瓜数据集2.0为例 <img src="https://img-blog.csdnimg.cn/20210125220234785.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTc3MjgzOQ==,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>显然，开始时分为正例和反例，其中正例<span class="math inline">\(p_1 = \frac{8}{17}\)</span>，反例<span class="math inline">\(p_2 = \frac{9}{17}\)</span>，则信息熵 <span class="math display">\[
+H(X) = -(\frac{8}{17}\log\frac{8}{17}+\frac{9}{17}\log\frac{9}{17}) = 0.998
+\]</span> 要计算信息增益则还需要计算每个属性的信息熵，以色泽为例，色泽为青绿的瓜有6个，其中好瓜3个，则令色泽青绿为<span class="math inline">\(D_1\)</span> <span class="math display">\[
+H(D_1) = -(\frac{3}{6}\log\frac{3}{6}+\frac{3}{6}\log\frac{3}{6}) = 1
+\]</span> 同理可得色泽乌黑(<span class="math inline">\(D_2\)</span>)，色泽浅白(<span class="math inline">\(D_3\)</span>)的信息熵为 <span class="math display">\[
+\begin{aligned}
+H(D_2) = 0.918\\
+H(D_3) = 0.722
+\end{aligned}
+\]</span> 根据信息增益定义式有 <span class="math display">\[\begin{aligned}
+    I(X,D) = H(X)-H(X|Y) = 0.998-(\frac{6}{17}\times1+\frac{6}{17}\times0.918+\\\frac{5}{17}\times0.722) = 0.109
+\end{aligned}
+\]</span>   同理可以计算根蒂的信息增益为0.143，敲声为0.141，纹理为0.381，脐部为0.289，触感为0.006。其中属性“纹理”的信息增益最大，故将“纹理”作为节点。下一层的计算，将在“纹理=清晰，模糊和稍糊”的三种情况下分别计算剩余属性的条件熵，再利用信息增益的定义式计算每个属性的信息增益，如此往复，直至到达迭代次数或者所有特征全部被选择完毕。   从上面的例子中我们可以总结出一条规律：互信息=上一层的信息熵-下一层的信息熵。不过需要注意的是，除了根节点，每一层的信息熵都要当成条件熵进行计算，而决策树的任务就是需要找到最大信息熵来选取中间节点或者叶节点。因此，决策树或者由决策树构成的随机森林可以用来筛选特征并输出特征重要性。</p>
+<p><strong>思考</strong>：若是多分类问题且类别较多，ID3决策树模型的效果将会大幅削弱，因为此时信息增益将趋近于0</p>
+<h2 id="c4.5算法">3. C4.5算法</h2>
+<h3 id="简介-1">3.1 简介</h3>
+<p>  由于ID3算法对于连续值的处理无能为力，我们需要另一种改进的算法来实现对连续值的分类。C4.5作为ID3的改进算法，引入信息增益率作为其标准，结合信息增益本身来选择分裂子节点。 ### 3.2 信息增益率   凡是加了个“率”字的名词，就是在其原来的基础上从变化量变为变化量除以原来的值，那么信息增益率的式子也很容易得出 <span class="math display">\[
+I(X,Y)_{Ratio} = \frac{I(X,Y)}{H(Y)}
+\]</span> 根据信息熵的定义不难看出，信息增益率对取值数目少的特征由“偏好性”，即该特征取值数量越少，H(Y)往往会越小，反之越大。因此C4.5并不是暴力地取信息增益率最大的一项特征作为子节点，而是首先要选出高于所有特征的平均信息增益的几项，再从这几项中选出信息增益率最大的特征。 总而言之，C4.5算法执行过程大概可以总结为：   1. 计算所有未被选取的特征的信息增益；   2. 计算这些信息增益的平均值；   3. 选取信息增益大于平均值的特征；   4. 比较第3步中选出来的特征的信息增益率并选取最大的那一个，反回第一步，直至达到要求迭代次数或选择完毕。</p>
+<h2 id="cart算法">4. CART算法</h2>
+<h3 id="简介-2">4.1 简介</h3>
+<p>  CART算法全称是Classification and Regression Tree。顾名思义，这种算法既可以做分类也可以做回归。无论是在sklearn.tree的 DecisionTreeClassifier/DecisionTreeRegressor，还是在sklearn.ensemble中的RandomForestClassifier/RandomForestRegressor都是用CART树作为默认参数输入(当然也可以手动修改为ID3或C4.5)。 ### 4.2 Gini指数 Gini指数本来是国际上通用的、用以衡量一个国家或地区居民收入差距的常用指标，但也可以作为机器学习决策树的目标函数，其定义式如下： <span class="math display">\[
+Gini = \sum\limits_{k=1}^{K}p_k(1-p_k) = 1-\sum\limits_{k=1}^{K}p_k^2
+\]</span> 其中<span class="math inline">\(p_k\)</span>为某一特征的某一取值在该特征中所有取值中出现的概率。   类比Gini指数本身的作用，我们常常希望一个国家或地区的收入差距越小越好，因此我们就选用Gini指数最小的特征作为最优划分项。 ### 4.3 CART树的回归问题   CART树在解决分类问题时选用Gini指数作为节点分裂标准，而在解决回归问题的时候则会选择传统的均方误差作为分类函数，不过回归树模型与一般的回归模型有所不同。   我们知道树的最后会生成若干个叶节点作为结果，那么类比线性回归就可以得到CART目标函数 <span class="math display">\[
+a = \argmin\limits_a \frac{1}{n}\sum\limits_{i = 1}^n(f(\boldsymbol{x}_i)-y)^2
+\]</span> 当然这只是第一步，回归树面临的还有一个重大问题：<strong>如何选取划分点</strong>？   有一个最简单的方法——二分法，即选定一个阈值t，将样本分为大于t的部分和小于t的部分。这两个部分分别拥有自己的均方误差值，而CART回归树要做的就是使得这两个回归树的均方误差之和最小。t值的选取也很容易，显然我们可以知道t值是位于分界点处两个样本取值之间的一个值，常常是这两个样本取值正中间的值，即 <span class="math display">\[
+t = \frac{a_i+a_{i+1}}{2}
+\]</span> 我们可以遍历所有的样本来选取t值，譬如最开始t是<span class="math inline">\(a_i\)</span>和<span class="math inline">\(a_{i+1}\)</span>之间的值，即小于t的样本有<span class="math inline">\(a_1,a_2\)</span>...<span class="math inline">\(a_i\)</span>，大于t的样本有<span class="math inline">\(a_{i+1},a_{i+2}...a_n\)</span>，可以用一张图来表示</p>
+<figure>
+<img src="https://img-blog.csdnimg.cn/20210125220234659.png#pic_center" alt="在这里插入图片描述"><figcaption aria-hidden="true">在这里插入图片描述</figcaption>
+</figure>
+<p>对于左边，回归树可以给出预测值<span class="math inline">\(c_1\)</span>，对于右边，同样有预测值<span class="math inline">\(c_2\)</span>。现在只要遍历i的所有取值，求出均方误差值之和最小的那一个。即 <span class="math display">\[
+i = \argmin_i[\min\limits_{c_1}\sum\limits_{k=1}^i(c_1-y)^2+\min\limits_{c_2}\sum\limits_{k=i+1}^n(c_2-y)^2]
+\]</span> 这就是第一次选取分裂节点的过程，此后只需对左右两边的样本分别再次执行同样的操作，直到达到迭代次数。</p>
+<h3 id="后记">后记</h3>
+<p>这篇笔记真的憋了很久，写的时候才发现之前学的很多细节性的东西都忘光了，如果文中有错误欢迎提出指正，另外复习真的很重要呀！！</p>
+<h2 id="参考文献">参考文献</h2>
+<p>[1]周志华.机器学习[M].清华大学出版社:北京,2016. [2]Jeremy Liang.机器学习算法笔记--------建立西瓜数据集[EB/OL].https://blog.csdn.net/qq_35654046/article/details/84783638 2018-12-04. [3]wuliytTaotao.[EB/OL]. https://www.cnblogs.com/wuliytTaotao/p/10724118.html.2019-4-1在这里插入图片描述</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%86%B3%E7%AD%96%E6%A0%91/" rel="tag"># 决策树</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/07/10/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/" rel="prev" title="自学西瓜书1：回归">
+                  <i class="fa fa-chevron-left"></i> 自学西瓜书1：回归
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Emil Jiang</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
