@@ -315,9 +315,15 @@ mjx-container[display="true"] + br {
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2022-09-26 18:48:26 / 修改时间：19:16:01" itemprop="dateCreated datePublished" datetime="2022-09-26T18:48:26+08:00">2022-09-26</time>
+      <time title="创建时间：2022-09-26 18:48:26" itemprop="dateCreated datePublished" datetime="2022-09-26T18:48:26+08:00">2022-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-09-27 11:32:17" itemprop="dateModified" datetime="2022-09-27T11:32:17+08:00">2022-09-27</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -336,14 +342,14 @@ mjx-container[display="true"] + br {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>903</span>
+      <span>2.9k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>3 分钟</span>
     </span>
 </div>
 
@@ -354,21 +360,15 @@ mjx-container[display="true"] + br {
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>毕业设计需要用Xshell在远程配置Ubuntu服务器里配置Anaconda, Pytorch, CUDA等环境，这里记录一下配置过程。另外因为服务器无法连接外网，所以需要在本地下载好需要的软件，然后通过Xshell上传到服务器上。 ## 1. Xshell ### 1.1 安装 Xshell是一款远程连接工具，可以在Windows系统下连接Linux服务器，安装过程很简单，直接下载安装即可。这里给出下载链接（需要梯子）：<a target="_blank" rel="noopener" href="https://www.netsarang.com/zh/xshell/">Xshell</a> ### 1.2 连接 连接方法有两种，首先介绍直接在命令行里连接，直接在shell中运行如下指令： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh username@ip</span><br></pre></td></tr></table></figure> 其中username是服务器的用户名，ip是服务器的ip地址，连接成功后会提示输入密码，输入密码后就可以进入服务器了。另一种方法是在Xshell中配置好服务器的信息，然后直接点击连接即可。</p>
-第二种是在Xshell中配置好服务器的信息，详细步骤如下： 1. 点击Xshell左上角的“文件”-&gt;“新建会话” 2. 弹出窗口中输入主机名称，主机号，端口等信息，如图所示：
-<div align="center">
-<img src="/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell1.png"> 3. 配置用户名和密码，该方法此后记住用户名和密码后无需再次输入，如图所示：
-<div align="center">
-<p><img src="/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell2.png"> 4. 双击刚刚新建的会话，即可连接服务器。</p>
-<h2 id="anaconda">2. Anaconda</h2>
-<h3 id="安装">2.1 安装</h3>
-<p>因为目前所使用的服务器无法使用外网，所以需要从本地下载好Anaconda，然后通过Xshell上传到服务器上。Anaconda的下载链接为：<a target="_blank" rel="noopener" href="https://www.anaconda.com/products/individual">Anaconda</a>，这个链接需要科学上网才能高速下载，嫌慢的也可以下清华源的：<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/">清华源</a>。</p>
-下载好后，通过Xshell上传到服务器上，单击“窗口”-&gt;“传输新建文件”，此时会提示需要XFTP，不理他，直接点取消。此时会弹出新的shell窗口，输入指令<code>lpwd</code>查看当前共享文件所需保存的的路径，如图所示：
-<div data-align="center">
-<img src="/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell3.png">
-</div>
-<p>把下载的文件复制到该文件夹下，然后在Xshell中输入指令 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">put Anaconda3-2022.05-Linux-x86_64.sh</span><br></pre></td></tr></table></figure> put后的参数就是下载的Anaconda文件。上传完成后在shell中输入 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash Anaconda3-2022.05-Linux-x86_64.sh</span><br></pre></td></tr></table></figure> 一直回车然后输入yes即可安装完成。</p>
-</div></div>
+          <p>毕业设计需要用Xshell在远程配置Ubuntu服务器里配置Anaconda, Pytorch, CUDA等环境，这里记录一下配置过程。另外因为服务器无法连接外网，所以需要在本地下载好需要的软件，然后通过Xshell上传到服务器上。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -910,13 +910,13 @@ mjx-container[display="true"] + br {
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">14k</span>
+    <span title="站点总字数">16k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">13 分钟</span>
+    <span title="站点阅读时长">14 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">
