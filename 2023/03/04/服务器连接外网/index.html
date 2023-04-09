@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.12.3","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="服务器无法连接外网，一个一个离线装Python包实在太麻烦，本方法可以用自己电脑做代理连接将服务器连接到外网下载Python包。">
 <meta property="og:type" content="article">
@@ -385,8 +385,8 @@ mjx-container[display="true"] + br {
 <p>想要用自己的电脑做代理将服务器接到外网，需要将自己电脑的IP地址作为代理服务地址配置在Linux服务器上，然后在服务器上配置代理。用Clash这个软件可以很方便查看自己电脑的IP和端口。当然IP地址也可以用powershell中的<code>ipconfig</code>命令查看，但用命令行查看当前网络端口有些麻烦，所以推荐用Clash。 <a target="_blank" rel="noopener" href="https://www.bing.com/ck/a?!&amp;&amp;p=23bfa545fa8b33caJmltdHM9MTY3Nzg4ODAwMCZpZ3VpZD0yMWNlMzMxMy0yMjEyLTY4ODYtMjJmMC0yMWQ0MjNjMDY5YzMmaW5zaWQ9NTE3MA&amp;ptn=3&amp;hsh=3&amp;fclid=21ce3313-2212-6886-22f0-21d423c069c3&amp;psq=clash+for+windows&amp;u=a1aHR0cHM6Ly9naXRodWIuY29tL0ZuZHJvaWQvY2xhc2hfZm9yX3dpbmRvd3NfcGtnL3JlbGVhc2Vz&amp;ntb=1">Clash下载链接点这里</a></p>
 <p>下载好后代开软件，点开Allow LAN选项，然后点击旁边的三角按钮查看当前网络的IP地址，端口号在第一行Port标出。保存好IP地址和端口号。 <img src="/2023/03/04/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9E%E6%8E%A5%E5%A4%96%E7%BD%91/clash.png" alt="Clash界面"></p>
 <h1 id="linux服务器配置代理">2. Linux服务器配置代理</h1>
-<p>在服务器root目录下用vim打开<code>.bashrc</code>文件， <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bashrc</span><br></pre></td></tr></table></figure></p>
-<p>添加如下内容： <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export_http_proxy=http://&lt;IP地址&gt;:&lt;端口号&gt;</span><br><span class="line">export_https_proxy=http://&lt;IP地址&gt;:&lt;端口号&gt;</span><br></pre></td></tr></table></figure> 之后用<code>:wq</code>命令保存退出，然后执行<code>source ~/.bashrc</code>命令使配置生效。之后就可以用pip或者conda命令直接在服务器上安装包啦！</p>
+<p>在服务器root目录下用vim打开<code>.bashrc</code>文件， <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bashrc</span><br></pre></td></tr></table></figure></p>
+<p>添加如下内容： <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export_http_proxy=http:<span class="regexp">//</span>&lt;IP地址&gt;:&lt;端口号&gt;</span><br><span class="line">export_https_proxy=http:<span class="regexp">//</span>&lt;IP地址&gt;:&lt;端口号&gt;</span><br></pre></td></tr></table></figure> 之后用<code>:wq</code>命令保存退出，然后执行<code>source ~/.bashrc</code>命令使配置生效。之后就可以用pip或者conda命令直接在服务器上安装包啦！</p>
 
     </div>
 
@@ -403,8 +403,8 @@ mjx-container[display="true"] + br {
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE2/" rel="prev" title="环境配置-VSCode篇">
-                  <i class="fa fa-chevron-left"></i> 环境配置-VSCode篇
+                <a href="/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" rel="prev" title="环境配置-Xshell篇">
+                  <i class="fa fa-chevron-left"></i> 环境配置-Xshell篇
                 </a>
             </div>
             <div class="post-nav-item">
