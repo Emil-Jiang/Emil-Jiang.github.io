@@ -2690,7 +2690,7 @@ body {
   padding: 0px 40px 100px 120px;
 }
 .sidebar {
-  transition-duration: 0.2s;
+  transition-duration: 0.13s;
   opacity: 1;
 }
 .posts-expand .post-title-link {
