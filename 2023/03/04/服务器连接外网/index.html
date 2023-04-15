@@ -172,8 +172,7 @@ mjx-container[display="true"] {
 mjx-container[display="true"] + br {
   display: none;
 }
-</style><link rel="alternate" href="/atom.xml" title="记录一些东西" type="application/atom+xml">
-</head>
+</style></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
   <div class="headband"></div>
@@ -387,7 +386,7 @@ mjx-container[display="true"] + br {
 <p>下载好后代开软件，点开Allow LAN选项，然后点击旁边的三角按钮查看当前网络的IP地址，端口号在第一行Port标出。保存好IP地址和端口号。 <img src="/2023/03/04/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9E%E6%8E%A5%E5%A4%96%E7%BD%91/clash.png" alt="Clash界面"></p>
 <h1 id="linux服务器配置代理">2. Linux服务器配置代理</h1>
 <p>在服务器root目录下用vim打开<code>.bashrc</code>文件， <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bashrc</span><br></pre></td></tr></table></figure></p>
-<p>添加如下内容： <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export_http_proxy=http:<span class="regexp">//</span>&lt;IP地址&gt;:&lt;端口号&gt;</span><br><span class="line">export_https_proxy=http:<span class="regexp">//</span>&lt;IP地址&gt;:&lt;端口号&gt;</span><br></pre></td></tr></table></figure> 之后用<code>:wq</code>命令保存退出，然后执行<code>source ~/.bashrc</code>命令使配置生效。之后就可以用pip或者conda命令直接在服务器上安装包啦！</p>
+<p>添加如下内容： <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export_http_proxy=http://<span class="tag">&lt;<span class="name">IP地址</span>&gt;</span>:<span class="tag">&lt;<span class="name">端口号</span>&gt;</span></span><br><span class="line">export_https_proxy=http://<span class="tag">&lt;<span class="name">IP地址</span>&gt;</span>:<span class="tag">&lt;<span class="name">端口号</span>&gt;</span></span><br></pre></td></tr></table></figure> 之后用<code>:wq</code>命令保存退出，然后执行<code>source ~/.bashrc</code>命令使配置生效。之后就可以用pip或者conda命令直接在服务器上安装包啦！</p>
 
     </div>
 
