@@ -168,5 +168,5 @@ backup:
   theme: next
   message: Back up my hexo blog
   repository:
-    github: git@github.com:Emil-Jiang/Emil-Jiang.github.io.git,backup
+    origin: git@github.com:Emil-Jiang/Emil-Jiang.github.io.git,backup
 
