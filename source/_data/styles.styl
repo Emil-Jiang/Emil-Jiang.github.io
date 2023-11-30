@@ -1,0 +1,67 @@
+// Custom styles.
+// 整体背景设置
+body {
+ 	background:url(/images/violet.jpg);// 设定背景图片,images同处于source文件夹下
+ 	background-repeat: no-repeat;// 设定背景图片非重复填充
+    background-attachment:fixed;// 设置背景图片不随页面滚动
+    background-position:50% 50%;// 设置背景图片位置
+	background-size: cover// 设置保持图像的纵横比并将图像缩放成将完全覆盖背景定位区域的最小大小
+}
+.post-block{
+        background-color: rgba(255, 255, 255, 1);
+        margin-top: 24px;
+        margin-bottom: 24px;
+        padding: 60px;
+        border-radius: 30px 30px 30px 30px;
+        box-shadow: 8px 7px 2px 0 rgba(0,0,0,0.12), 7px 4px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);
+}
+// 页面头样式属性
+.header-inner {
+  // 也可以同时定义背景色
+   background: #FFFFF;
+  // 透明度
+  opacity: 1;
+}
+// 页面主体属性
+.main-inner {
+    background-color: rgba(255, 255, 255, 0);
+    padding: 0px 40px 100px 120px;
+}
+// sidebar侧边工具栏样式属性
+.sidebar{
+    // 动画过渡时间
+	transition-duration: 0.13s;
+	//background: #ffffff
+    // 透明度
+	opacity: 1
+}
+// 标题样式
+.posts-expand .post-title-link {
+	// 设置字体颜色
+	color: #000;
+}
+
+//设置椭圆边角
+.header-inner {
+    border-radius: 30px 30px 30px 30px;
+    box-shadow: 8px 7px 2px 0 rgba(0,0,0,0.12), 7px 4px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);
+}
+.sidebar-inner{
+    border-radius: 30px 30px 30px 30px;
+    box-shadow: 8px 7px 2px 0 rgba(0,0,0,0.12), 7px 4px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);    
+}
+.pagination {
+    border-radius: 30px 80px 30px 80px;
+    box-shadow: 8px 7px 2px 0 rgba(0,0,0,0.12), 7px 4px 1px -2px rgba(0,0,0,0.06), 0 1px 5px 0 rgba(0,0,0,0.12);
+}
+
+// 针对Code代码标签的美化
+code {
+  padding: 2px 4px;
+  word-wrap: break-word;
+  color: #c7254e;
+  background: #f9f2f4;
+  border-radius: 3px;
+  font-size: 18px;
+}
+

@@ -1,0 +1,172 @@
+# Hexo Configuration
+## Docs: https://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+
+# Site
+title: 记录一些东西
+subtitle: ''
+description: ''
+keywords:
+author: Emil Jiang
+language: zh-CN
+timezone: ''
+
+# URL
+## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
+url: http://example.com
+permalink: :year/:month/:day/:title/
+permalink_defaults:
+pretty_urls:
+  trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
+  trailing_html: true # Set to false to remove trailing '.html' from permalinks
+
+# Directory
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render:
+
+# Writing
+new_post_name: :title.md # File name of new posts
+default_layout: post
+titlecase: false # Transform title into titlecase
+external_link:
+  enable: true # Open external links in new tab
+  field: site # Apply to the whole site
+  exclude: ''
+filename_case: 0
+render_drafts: false
+post_asset_folder: true
+relative_link: false
+future: true
+highlight:
+  enable: true
+  line_number: true
+  auto_detect: true
+  tab_replace: ''
+  wrap: true
+  hljs: false
+prismjs:
+  enable: false
+  preprocess: true
+  line_number: true
+  tab_replace: ''
+
+# Home page setting
+# path: Root path for your blogs index page. (default = '')
+# per_page: Posts displayed per page. (0 = disable pagination)
+# order_by: Posts order. (Order by date descending by default)
+index_generator:
+  path: ''
+  per_page: 10
+  order_by: -date
+
+# Category & Tag
+default_category: uncategorized
+category_map:
+tag_map:
+
+# Metadata elements
+## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
+meta_generator: true
+
+# Date / Time format
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+## updated_option supports 'mtime', 'date', 'empty'
+updated_option: 'mtime'
+
+# Pagination
+## Set per_page to 0 to disable pagination
+per_page: 10
+pagination_dir: page
+
+# Include / Exclude file(s)
+## include:/exclude: options only apply to the 'source/' folder
+include:
+exclude:
+ignore:
+
+# Extensions
+## Plugins: https://hexo.io/plugins/
+webpushr:
+  enable: true # 是否启用推送插件
+
+  webpushrKey: "970cc3e89c5c85eeb1c85e5024048adc"
+  webpushrAuthToken: "67808"
+  # 出于安全考虑，建议将上述两个重要参数添加至系统全局环境变量，并删除或注释掉此处配置
+  # 否则可在网页端向访问者或订阅用户发送推送 https://www.webpushr.com/api-playground
+  # 例如GitHub Actions环境变量配置，参数名不变，密钥名自定义，可参考如下
+  # env:
+  #     webpushrKey: ${{ secrets.WEBPUSHR_KEY }}
+  #     webpushrAuthToken: ${{ secrets.WEBPUSHR_AUTH_TOKEN }}
+  # 如果您的仓库私有，则无需担心此问题
+
+  trackingCode: "BC2Mz-8Xgdc2VW4vFnwNfS4x0w0waPBGqPr6CGrJY-DRgFG7YNWQXjaiqikZeIrHkvuhepGdn9fWJg-vVG_Jm4Q"
+  icon: "https://jsd.cdn.zzko.cn/gh/ccknbc-backup/cdn/image/pwa/192.png" # 必须为192*192 png图片
+  # auto_hide: "0" # 默认为 1，代表true，即自动隐藏
+  # sort: "date" # 默认为updated，即只要最新文章更改了更新时间即推送新文章，改为date即文章第一次发布时间
+  # delay: "30" # 延时推送，考虑到CDN缓存更新，默认定时为在 hexo d 10分钟后推送，单位为分钟（最短时间为5min）
+  # expire: "15d" # 推送过期时长，默认值为7天，格式如下：'5m'代表5分钟,'5h'代表5小时, '5d'代表5天.
+  # image: # 默认为文章封面，Front-matter 属性为'cover'(butterfly主题友好选项)，如果您没有定义默认封面或此属性，请在这里设置默认image
+  action_buttons: #false # ，默认第一个按钮为前往查看文章，您可以关闭false后替换第二个按钮相关属性，因参数需求限制（本人太菜）否则将显示两个前往查看按钮
+    [{ "title": "订阅页面", "url": "https://emil-jiang.github.io/" }]
+  # 以下配置为按订阅主题推送给不同订阅用户，请按照数组形式，一一对应，具体位置请看使用文档
+  # categories: [工作, 博客, 工具, 生活, 音乐, 学习]
+  # segment: ["484223", "484224", "484225", "484226", "484227", "484229"]
+  endpoint: all # 可选配置 all / segment / sid
+  # 默认为 segment，即根据不同主题推送细分，同时配置上述选项
+  # 官方文档参数见 https://docs.webpushr.com/introduction-to-rest-api
+  # 例如 all，即推送至所有用户；针对测试，可只推送给单个用户即自己，同时设置 sid 选项
+  # 您也可以将segment 设置为 all-users 对应的ID，同样也可以实现推送至所有用户
+  # sid: "119810055" # 单个用户ID 可在控制台查看 https://app.webpushr.com/subscribers
+
+
+  # 此外，在文章 Frontmatter 处
+  # 可覆盖auto_hide和expire配置，针对特别提醒文章可以设置不自动隐藏及过期时间延长等操作
+  # 以及可指定schedule参数（例如：schedule: 2022-10-01 00:00:00），定时推送，而非延时发送
+# 作者: CC康纳百川
+# 链接: https://blog.ccknbc.cc/posts/hexo-webpushr-notification/
+# 来源: CC的部落格
+# 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+## Themes: https://hexo.io/themes/
+theme: next
+# Deployment
+## Docs: https://hexo.io/docs/one-command-deployment
+deploy:
+  type: 'git'
+  repo: git@github.com:Emil-Jiang/Emil-Jiang.github.io.git
+  branch: master
+  
+mathjax:
+  tags: none # or 'ams' or 'all'
+  single_dollars: true # enable single dollar signs as in-line math delimiters
+  cjk_width: 0.9 # relative CJK char width
+  normal_width: 0.6 # relative normal (monospace) width
+  append_css: true # add CSS to pages rendered by MathJax
+  every_page: false # if true, every page will be rendered by MathJax regardless the `mathjax` setting in Front-matter
+  extension_options: {}
+    # you can put your extension options here
+    # see http://docs.mathjax.org/en/latest/options/input/tex.html#tex-extension-options for more detail
+    
+search:
+  path: search.xml
+  field: post
+  content: true
+  format: html
+
+backup:
+  type: git
+  theme: next
+  message: Back up my hexo blog
+  repository:
+    github: git@github.com:Emil-Jiang/Emil-Jiang.github.io.git,backup
+
