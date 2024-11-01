@@ -7,12 +7,12 @@
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.2.0">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/project/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/project/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/project/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/project/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/project/css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
 
 
@@ -22,33 +22,33 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"emil-jiang.github.io","root":"/project/","images":"/project/images","scheme":"Pisces","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/project/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/project/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"emil-jiang.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="AI经典论文笔记-End-to-End Object Detection with Transformers">
 <meta property="og:type" content="article">
 <meta property="og:title" content="论文笔记-End-to-End Object Detection with Transformers">
-<meta property="og:url" content="https://emil-jiang.github.io/project/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DETR/index.html">
+<meta property="og:url" content="https://emil-jiang.github.io/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DETR/index.html">
 <meta property="og:site_name" content="记录一些东西">
 <meta property="og:description" content="AI经典论文笔记-End-to-End Object Detection with Transformers">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://emil-jiang.github.io/project/project/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DETR/DETR-simple.png">
-<meta property="og:image" content="https://emil-jiang.github.io/project/project/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DETR/DETR-full.png">
-<meta property="og:image" content="https://emil-jiang.github.io/project/project/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DETR/DETR-result.png">
-<meta property="og:image" content="https://emil-jiang.github.io/project/project/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DETR/DETR-encoder-res.png">
-<meta property="og:image" content="https://emil-jiang.github.io/project/project/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DETR/DETR-decoder-res.png">
+<meta property="og:image" content="https://emil-jiang.github.io/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DETR/DETR-simple.png">
+<meta property="og:image" content="https://emil-jiang.github.io/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DETR/DETR-full.png">
+<meta property="og:image" content="https://emil-jiang.github.io/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DETR/DETR-result.png">
+<meta property="og:image" content="https://emil-jiang.github.io/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DETR/DETR-encoder-res.png">
+<meta property="og:image" content="https://emil-jiang.github.io/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DETR/DETR-decoder-res.png">
 <meta property="article:published_time" content="2024-10-31T09:37:43.099Z">
 <meta property="article:modified_time" content="2024-10-31T09:37:43.099Z">
 <meta property="article:author" content="Emil Jiang">
 <meta property="article:tag" content="读论文">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://emil-jiang.github.io/project/project/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DETR/DETR-simple.png">
+<meta name="twitter:image" content="https://emil-jiang.github.io/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DETR/DETR-simple.png">
 
 
-<link rel="canonical" href="https://emil-jiang.github.io/project/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DETR/">
+<link rel="canonical" href="https://emil-jiang.github.io/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DETR/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://emil-jiang.github.io/project/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DETR/","path":"2024/10/31/论文笔记-DETR/","title":"论文笔记-End-to-End Object Detection with Transformers"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://emil-jiang.github.io/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DETR/","path":"2024/10/31/论文笔记-DETR/","title":"论文笔记-End-to-End Object Detection with Transformers"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>论文笔记-End-to-End Object Detection with Transformers | 记录一些东西</title>
@@ -59,7 +59,7 @@
 
 
   <noscript>
-    <link rel="stylesheet" href="/project/css/noscript.css">
+    <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
@@ -195,7 +195,7 @@ mjx-container[display="true"] + br {
 
   <div class="site-meta">
 
-    <a href="/project/" class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
       <p class="site-title">记录一些东西</p>
       <i class="logo-line"></i>
@@ -212,7 +212,7 @@ mjx-container[display="true"] + br {
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/project/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/project/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/project/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/project/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/project/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -277,25 +277,25 @@ prediction loss</span></a></li><li class="nav-item nav-level-3"><a class="nav-li
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Emil Jiang"
-      src="/project/images/violet-2.png">
+      src="/images/violet-2.png">
   <p class="site-author-name" itemprop="name">Emil Jiang</p>
   <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        <a href="/project/archives/">
+        <a href="/archives/">
           <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-          <a href="/project/categories/">
+          <a href="/categories/">
         <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-          <a href="/project/tags/">
+          <a href="/tags/">
         <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
@@ -335,10 +335,10 @@ prediction loss</span></a></li><li class="nav-item nav-level-3"><a class="nav-li
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://emil-jiang.github.io/project/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DETR/">
+    <link itemprop="mainEntityOfPage" href="https://emil-jiang.github.io/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DETR/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/project/images/violet-2.png">
+      <meta itemprop="image" content="/images/violet-2.png">
       <meta itemprop="name" content="Emil Jiang">
     </span>
 
@@ -372,7 +372,7 @@ prediction loss</span></a></li><li class="nav-item nav-level-3"><a class="nav-li
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/project/categories/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">论文笔记</span></a>
+          <a href="/categories/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">论文笔记</span></a>
         </span>
     </span>
 
@@ -433,7 +433,7 @@ steps。DETR提出了一个简单的端到端结构，大幅度简化了前向�
 RCNN的2000个框做筛选少多了，并且RCNN系列是通过预先定义边框来输出anchor，相当于人为增加了先验知识，而DETR不需要。简化版中省去了这篇文章的关键贡献之一object
 queries，在方法中会详细介绍。</p>
 <div data-align="center">
-<img src="/project/project/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DETR/DETR-simple.png" alt="DETR结构简化版">
+<img src="/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DETR/DETR-simple.png" alt="DETR结构简化版">
 </div>
 <h2 id="方法">4. 方法</h2>
 <h3 id="object-detection-set-prediction-loss">4.1 Object detection set
@@ -455,7 +455,7 @@ attention操作，这也是为什么DETR可以学到图像的全局信息。最�
 query与encoder的输出特征进行匹配，以此确object
 query与特征图中哪个位置相对应。</p>
 <div data-align="center">
-<img src="/project/project/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DETR/DETR-full.png" alt="DETR模型架构">
+<img src="/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DETR/DETR-full.png" alt="DETR模型架构">
 </div>
 <h3 id="detr代码实现">4.3 DETR代码实现</h3>
 <p>原文中直接给出了DETR的Pytorch代码实现，非常的简洁优雅。</p>
@@ -465,12 +465,12 @@ query与特征图中哪个位置相对应。</p>
 RCNN系列还是有差距，同等模型参数量大小下的推理速度约为Faster
 RCNN的一半，而且DETR初版的训练时间非常长，作者一共训练了500个epoch，而平常只需要几十个epoch就差不多了。</p>
 <div data-align="center">
-<img src="/project/project/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DETR/DETR-result.png" alt="DETR对比Faster RCNN系列">
+<img src="/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DETR/DETR-result.png" alt="DETR对比Faster RCNN系列">
 </div>
 <p>从作者的可视化结果中可以看出，DETR的encoder主要学习了全局特征，让主要物体尽可能分开，但细节轮廓则需要decoder去学习。从结果中可以看出encoder和decoder对遮挡问题都处理得很好。</p>
 <center class="half">
-<img src="/project/project/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DETR/DETR-encoder-res.png" alt="DETR encoder可视化">
-<img src="/project/project/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DETR/DETR-decoder-res.png" alt="DETR decoder可视化">
+<img src="/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DETR/DETR-encoder-res.png" alt="DETR encoder可视化">
+<img src="/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DETR/DETR-decoder-res.png" alt="DETR decoder可视化">
 </center>
 <h2 id="总结">6. 总结</h2>
 <p>DETR作为当年新的结构，能在COCO数据集上与Faster
@@ -486,19 +486,19 @@ DETR等基于它的工作层出不穷，足以见其在目标检测领域的影�
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/project/tags/%E8%AF%BB%E8%AE%BA%E6%96%87/" rel="tag"># 读论文</a>
+              <a href="/tags/%E8%AF%BB%E8%AE%BA%E6%96%87/" rel="tag"># 读论文</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/project/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DEIT/" rel="prev" title="论文笔记-Training data-efficient image transformers & distillation through attention">
+                <a href="/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DEIT/" rel="prev" title="论文笔记-Training data-efficient image transformers & distillation through attention">
                   <i class="fa fa-chevron-left"></i> 论文笔记-Training data-efficient image transformers & distillation through attention
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/project/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-MoCo/" rel="next" title="论文笔记-Momentum Contrast for Unsupervised Visual Representation Learning">
+                <a href="/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-MoCo/" rel="next" title="论文笔记-Momentum Contrast for Unsupervised Visual Representation Learning">
                   论文笔记-Momentum Contrast for Unsupervised Visual Representation Learning <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
@@ -569,17 +569,17 @@ DETR等基于它的工作层出不穷，足以见其在目标检测领域的影�
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
-<script src="/project/js/comments.js"></script><script src="/project/js/utils.js"></script><script src="/project/js/motion.js"></script><script src="/project/js/next-boot.js"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
-<script src="/project/js/third-party/search/local-search.js"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
 
 
-  <script src="/project/js/third-party/fancybox.js"></script>
+  <script src="/js/third-party/fancybox.js"></script>
 
-  <script src="/project/js/third-party/pace.js"></script>
+  <script src="/js/third-party/pace.js"></script>
 
   
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -590,7 +590,7 @@ DETR等基于它的工作层出不穷，足以见其在目标检测领域的影�
   
 
   <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
-<script src="/project/js/third-party/math/mathjax.js"></script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 

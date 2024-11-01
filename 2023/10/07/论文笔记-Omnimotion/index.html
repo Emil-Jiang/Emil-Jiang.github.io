@@ -7,12 +7,12 @@
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.2.0">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/project/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/project/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/project/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/project/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/project/css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
 
 
@@ -22,33 +22,33 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"emil-jiang.github.io","root":"/project/","images":"/project/images","scheme":"Pisces","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/project/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/project/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"emil-jiang.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="论文笔记-Track Everything Everywhere All at Once">
 <meta property="og:type" content="article">
 <meta property="og:title" content="论文笔记-Track Everything Everywhere All at Once">
-<meta property="og:url" content="https://emil-jiang.github.io/project/2023/10/07/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Omnimotion/index.html">
+<meta property="og:url" content="https://emil-jiang.github.io/2023/10/07/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Omnimotion/index.html">
 <meta property="og:site_name" content="记录一些东西">
 <meta property="og:description" content="论文笔记-Track Everything Everywhere All at Once">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://emil-jiang.github.io/project/project/2023/10/07/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Omnimotion/首页1.gif">
-<meta property="og:image" content="https://emil-jiang.github.io/project/project/2023/10/07/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Omnimotion/首页2.gif">
-<meta property="og:image" content="https://emil-jiang.github.io/project/project/2023/10/07/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Omnimotion/Omnimotion概览.jpg">
-<meta property="og:image" content="https://emil-jiang.github.io/project/project/2023/10/07/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Omnimotion/实验.jpg">
-<meta property="og:image" content="https://emil-jiang.github.io/project/project/2023/10/07/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Omnimotion/消融.jpg">
+<meta property="og:image" content="https://emil-jiang.github.io/2023/10/07/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Omnimotion/首页1.gif">
+<meta property="og:image" content="https://emil-jiang.github.io/2023/10/07/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Omnimotion/首页2.gif">
+<meta property="og:image" content="https://emil-jiang.github.io/2023/10/07/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Omnimotion/Omnimotion概览.jpg">
+<meta property="og:image" content="https://emil-jiang.github.io/2023/10/07/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Omnimotion/实验.jpg">
+<meta property="og:image" content="https://emil-jiang.github.io/2023/10/07/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Omnimotion/消融.jpg">
 <meta property="article:published_time" content="2023-10-06T16:00:00.000Z">
 <meta property="article:modified_time" content="2024-10-31T09:37:43.117Z">
 <meta property="article:author" content="Emil Jiang">
 <meta property="article:tag" content="读论文">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://emil-jiang.github.io/project/project/2023/10/07/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Omnimotion/首页1.gif">
+<meta name="twitter:image" content="https://emil-jiang.github.io/2023/10/07/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Omnimotion/首页1.gif">
 
 
-<link rel="canonical" href="https://emil-jiang.github.io/project/2023/10/07/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Omnimotion/">
+<link rel="canonical" href="https://emil-jiang.github.io/2023/10/07/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Omnimotion/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://emil-jiang.github.io/project/2023/10/07/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Omnimotion/","path":"2023/10/07/论文笔记-Omnimotion/","title":"论文笔记-Track Everything Everywhere All at Once"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://emil-jiang.github.io/2023/10/07/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Omnimotion/","path":"2023/10/07/论文笔记-Omnimotion/","title":"论文笔记-Track Everything Everywhere All at Once"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>论文笔记-Track Everything Everywhere All at Once | 记录一些东西</title>
@@ -59,7 +59,7 @@
 
 
   <noscript>
-    <link rel="stylesheet" href="/project/css/noscript.css">
+    <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
@@ -195,7 +195,7 @@ mjx-container[display="true"] + br {
 
   <div class="site-meta">
 
-    <a href="/project/" class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
       <p class="site-title">记录一些东西</p>
       <i class="logo-line"></i>
@@ -212,7 +212,7 @@ mjx-container[display="true"] + br {
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/project/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/project/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/project/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/project/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/project/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -276,25 +276,25 @@ mjx-container[display="true"] + br {
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Emil Jiang"
-      src="/project/images/violet-2.png">
+      src="/images/violet-2.png">
   <p class="site-author-name" itemprop="name">Emil Jiang</p>
   <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        <a href="/project/archives/">
+        <a href="/archives/">
           <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-          <a href="/project/categories/">
+          <a href="/categories/">
         <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-          <a href="/project/tags/">
+          <a href="/tags/">
         <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
@@ -334,10 +334,10 @@ mjx-container[display="true"] + br {
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://emil-jiang.github.io/project/2023/10/07/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Omnimotion/">
+    <link itemprop="mainEntityOfPage" href="https://emil-jiang.github.io/2023/10/07/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Omnimotion/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/project/images/violet-2.png">
+      <meta itemprop="image" content="/images/violet-2.png">
       <meta itemprop="name" content="Emil Jiang">
     </span>
 
@@ -378,7 +378,7 @@ mjx-container[display="true"] + br {
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/project/categories/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">论文笔记</span></a>
+          <a href="/categories/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">论文笔记</span></a>
         </span>
     </span>
 
@@ -417,8 +417,8 @@ mjx-container[display="true"] + br {
         <p>论文笔记-Track Everything Everywhere All at Once</p>
 <center>
 <figure class="half">
-<p><img src="/project/project/2023/10/07/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Omnimotion/首页1.gif" width="49%"></p>
-<p><img src="/project/project/2023/10/07/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Omnimotion/首页2.gif" width="49%"></p>
+<p><img src="/2023/10/07/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Omnimotion/首页1.gif" width="49%"></p>
+<p><img src="/2023/10/07/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Omnimotion/首页2.gif" width="49%"></p>
 </figure>
 </center>
 <span id="more"></span>
@@ -471,7 +471,7 @@ consistency）的方法来表示一个视频。作者把经过编码后的隐藏
 He啊）</p>
 <p>接下来作者正式提出了Omnimotion，如图所示</p>
 <div data-align="center">
-<img src="/project/project/2023/10/07/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Omnimotion/Omnimotion概览.jpg" width="700" height="250" alt="Omnimotion概览">
+<img src="/2023/10/07/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Omnimotion/Omnimotion概览.jpg" width="700" height="250" alt="Omnimotion概览">
 </div>
 <p>我们先对图(a)的组件进行解释，在4.5节中将对整个流程进行详细介绍</p>
 <p>这里共有两个关键的“体积”：第一个是本地体积（local
@@ -546,11 +546,11 @@ flow来收集输入运动数据时，这些数据可能不完整、嘈杂和不�
 Accuracy)，这个好理解，就是评估了每帧能见度/遮挡预测的准确性。</p>
 <p>TC(Temporal Coherence)，表示的帧间的一致性的L2距离，越小越好。</p>
 <div data-align="center">
-<img src="/project/project/2023/10/07/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Omnimotion/实验.jpg" width="700" height="250" alt="实验结果">
+<img src="/2023/10/07/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Omnimotion/实验.jpg" width="700" height="250" alt="实验结果">
 </div>
 <p>消融实验则是强调了<strong>可逆网络的重要性</strong></p>
 <div data-align="center">
-<img src="/project/project/2023/10/07/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Omnimotion/消融.jpg" alt="消融实验">
+<img src="/2023/10/07/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Omnimotion/消融.jpg" alt="消融实验">
 </div>
 <h2 id="一个有意思的github-issue">7. 一个有意思的GitHub issue</h2>
 <p>Omnimotion开源项目上的issue 7很有意思，讨论的是为什么要计算<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.987ex;" xmlns="http://www.w3.org/2000/svg" width="2.315ex" height="2.919ex" role="img" focusable="false" viewbox="0 -853.7 1023.4 1290.2"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="msubsup"><g data-mml-node="mi"><path data-c="1D465" d="M52 289Q59 331 106 386T222 442Q257 442 286 424T329 379Q371 442 430 442Q467 442 494 420T522 361Q522 332 508 314T481 292T458 288Q439 288 427 299T415 328Q415 374 465 391Q454 404 425 404Q412 404 406 402Q368 386 350 336Q290 115 290 78Q290 50 306 38T341 26Q378 26 414 59T463 140Q466 150 469 151T485 153H489Q504 153 504 145Q504 144 502 134Q486 77 440 33T333 -11Q263 -11 227 52Q186 -10 133 -10H127Q78 -10 57 16T35 71Q35 103 54 123T99 143Q142 143 142 101Q142 81 130 66T107 46T94 41L91 40Q91 39 97 36T113 29T132 26Q168 26 194 71Q203 87 217 139T245 247T261 313Q266 340 266 352Q266 380 251 392T217 404Q177 404 142 372T93 290Q91 281 88 280T72 278H58Q52 284 52 289Z"/></g><g data-mml-node="mi" transform="translate(605,363) scale(0.707)"><path data-c="1D458" d="M121 647Q121 657 125 670T137 683Q138 683 209 688T282 694Q294 694 294 686Q294 679 244 477Q194 279 194 272Q213 282 223 291Q247 309 292 354T362 415Q402 442 438 442Q468 442 485 423T503 369Q503 344 496 327T477 302T456 291T438 288Q418 288 406 299T394 328Q394 353 410 369T442 390L458 393Q446 405 434 405H430Q398 402 367 380T294 316T228 255Q230 254 243 252T267 246T293 238T320 224T342 206T359 180T365 147Q365 130 360 106T354 66Q354 26 381 26Q429 26 459 145Q461 153 479 153H483Q499 153 499 144Q499 139 496 130Q455 -11 378 -11Q333 -11 305 15T277 90Q277 108 280 121T283 145Q283 167 269 183T234 206T200 217T182 220H180Q168 178 159 139T145 81T136 44T129 20T122 7T111 -2Q98 -11 83 -11Q66 -11 57 -1T48 16Q48 26 85 176T158 471L195 616Q196 629 188 632T149 637H144Q134 637 131 637T124 640T121 647Z"/></g><g data-mml-node="mi" transform="translate(605,-292.2) scale(0.707)"><path data-c="1D457" d="M297 596Q297 627 318 644T361 661Q378 661 389 651T403 623Q403 595 384 576T340 557Q322 557 310 567T297 596ZM288 376Q288 405 262 405Q240 405 220 393T185 362T161 325T144 293L137 279Q135 278 121 278H107Q101 284 101 286T105 299Q126 348 164 391T252 441Q253 441 260 441T272 442Q296 441 316 432Q341 418 354 401T367 348V332L318 133Q267 -67 264 -75Q246 -125 194 -164T75 -204Q25 -204 7 -183T-12 -137Q-12 -110 7 -91T53 -71Q70 -71 82 -81T95 -112Q95 -148 63 -167Q69 -168 77 -168Q111 -168 139 -140T182 -74L193 -32Q204 11 219 72T251 197T278 308T289 365Q289 372 288 376Z"/></g></g></g></g></svg></mjx-container></span>而不是直接在新的第<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.462ex;" xmlns="http://www.w3.org/2000/svg" width="0.932ex" height="1.957ex" role="img" focusable="false" viewbox="0 -661 412 865"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D457" d="M297 596Q297 627 318 644T361 661Q378 661 389 651T403 623Q403 595 384 576T340 557Q322 557 310 567T297 596ZM288 376Q288 405 262 405Q240 405 220 393T185 362T161 325T144 293L137 279Q135 278 121 278H107Q101 284 101 286T105 299Q126 348 164 391T252 441Q253 441 260 441T272 442Q296 441 316 432Q341 418 354 401T367 348V332L318 133Q267 -67 264 -75Q246 -125 194 -164T75 -204Q25 -204 7 -183T-12 -137Q-12 -110 7 -91T53 -71Q70 -71 82 -81T95 -112Q95 -148 63 -167Q69 -168 77 -168Q111 -168 139 -140T182 -74L193 -32Q204 11 219 72T251 197T278 308T289 365Q289 372 288 376Z"/></g></g></g></svg></mjx-container></span>帧中采样，以及Omnimotion为什么work，作者也参与了讨论，比较有趣，这里给一个链接，有兴趣的朋友可以去看看：<a target="_blank" rel="noopener" href="https://github.com/qianqianwang68/omnimotion/issues/7">Omnimotion
@@ -572,19 +572,19 @@ Issue 7</a></p>
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/project/tags/%E8%AF%BB%E8%AE%BA%E6%96%87/" rel="tag"># 读论文</a>
+              <a href="/tags/%E8%AF%BB%E8%AE%BA%E6%96%87/" rel="tag"># 读论文</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/project/2023/09/18/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E7%AC%AC%E4%BA%8C%E7%AB%A0/" rel="prev" title="数字图像处理笔记-第二章：数字图像处理基础">
+                <a href="/2023/09/18/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E7%AC%AC%E4%BA%8C%E7%AB%A0/" rel="prev" title="数字图像处理笔记-第二章：数字图像处理基础">
                   <i class="fa fa-chevron-left"></i> 数字图像处理笔记-第二章：数字图像处理基础
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/project/2023/10/07/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E7%AC%AC%E4%B8%89%E7%AB%A0/" rel="next" title="数字图像处理笔记-第三章：图像变换">
+                <a href="/2023/10/07/%E6%95%B0%E5%AD%97%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86-%E7%AC%AC%E4%B8%89%E7%AB%A0/" rel="next" title="数字图像处理笔记-第三章：图像变换">
                   数字图像处理笔记-第三章：图像变换 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
@@ -655,17 +655,17 @@ Issue 7</a></p>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
-<script src="/project/js/comments.js"></script><script src="/project/js/utils.js"></script><script src="/project/js/motion.js"></script><script src="/project/js/next-boot.js"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
-<script src="/project/js/third-party/search/local-search.js"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
 
 
-  <script src="/project/js/third-party/fancybox.js"></script>
+  <script src="/js/third-party/fancybox.js"></script>
 
-  <script src="/project/js/third-party/pace.js"></script>
+  <script src="/js/third-party/pace.js"></script>
 
   
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -676,7 +676,7 @@ Issue 7</a></p>
   
 
   <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
-<script src="/project/js/third-party/math/mathjax.js"></script>
+<script src="/js/third-party/math/mathjax.js"></script>
 
 
 
