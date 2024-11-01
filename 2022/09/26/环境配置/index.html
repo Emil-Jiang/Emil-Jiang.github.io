@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="毕业设计需要用Xshell在远程配置Ubuntu服务器里配置Anaconda, Pytorch, CUDA等环境，这里记录一下配置过程。另外因为服务器无法连接外网，所以需要在本地下载好需要的软件，然后通过Xshell上传到服务器上。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="环境配置-Xshell篇">
+<meta property="og:url" content="http://example.com/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="记录一些东西">
+<meta property="og:description" content="毕业设计需要用Xshell在远程配置Ubuntu服务器里配置Anaconda, Pytorch, CUDA等环境，这里记录一下配置过程。另外因为服务器无法连接外网，所以需要在本地下载好需要的软件，然后通过Xshell上传到服务器上。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell1.png">
+<meta property="og:image" content="http://example.com/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell2.png">
+<meta property="og:image" content="http://example.com/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell3.png">
+<meta property="og:image" content="http://example.com/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell4.png">
+<meta property="og:image" content="http://example.com/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell5.png">
+<meta property="og:image" content="http://example.com/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell6.png">
+<meta property="article:published_time" content="2022-09-26T10:48:26.000Z">
+<meta property="article:modified_time" content="2024-10-31T09:37:43.073Z">
+<meta property="article:author" content="Emil Jiang">
+<meta property="article:tag" content="Xshell, Linux服务器, Anaconda, Pytorch">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell1.png">
+
+
+<link rel="canonical" href="http://example.com/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/","path":"2022/09/26/环境配置/","title":"环境配置-Xshell篇"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>环境配置-Xshell篇 | 记录一些东西</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">记录一些东西</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#xshell"><span class="nav-text">1. Xshell</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-text">1.1 安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5"><span class="nav-text">1.2 连接</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#anaconda"><span class="nav-text">2. Anaconda</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-1"><span class="nav-text">2.1 安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="nav-text">2.2 配置环境变量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cuda"><span class="nav-text">3. CUDA</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-2"><span class="nav-text">3.1 安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F-1"><span class="nav-text">3.2 配置环境变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81%E5%AE%89%E8%A3%85"><span class="nav-text">3.3 验证安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cudnn"><span class="nav-text">4. cuDNN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85"><span class="nav-text">4.1 下载与安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%8E%8B"><span class="nav-text">4.2 解压</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#pytorch"><span class="nav-text">5. PyTorch</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-3"><span class="nav-text">5.1 安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81%E5%AE%89%E8%A3%85-1"><span class="nav-text">5.2 验证安装</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%90%8E%E7%BB%AD"><span class="nav-text">6. 后续</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Emil Jiang"
+      src="/images/violet-2.png">
+  <p class="site-author-name" itemprop="name">Emil Jiang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/violet-2.png">
+      <meta itemprop="name" content="Emil Jiang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录一些东西">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="环境配置-Xshell篇 | 记录一些东西">
+      <meta itemprop="description" content="毕业设计需要用Xshell在远程配置Ubuntu服务器里配置Anaconda, Pytorch, CUDA等环境，这里记录一下配置过程。另外因为服务器无法连接外网，所以需要在本地下载好需要的软件，然后通过Xshell上传到服务器上。">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          环境配置-Xshell篇
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-09-26 18:48:26" itemprop="dateCreated datePublished" datetime="2022-09-26T18:48:26+08:00">2022-09-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-10-31 17:37:43" itemprop="dateModified" datetime="2024-10-31T17:37:43+08:00">2024-10-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">毕业设计需要用Xshell在远程配置Ubuntu服务器里配置Anaconda, Pytorch, CUDA等环境，这里记录一下配置过程。另外因为服务器无法连接外网，所以需要在本地下载好需要的软件，然后通过Xshell上传到服务器上。</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><strong><font color="Red">请在安装前登录xshell并尝试<code>conda -V</code>和<code>pip -V</code>指令，若可以正常显示版本号则无需安装，若无法显示版本号则需要安装。本文只是提供一个安装思路，不同的电脑环境会遇到不同的问题。</font></strong></p>
+<h1 id="xshell">1. Xshell</h1>
+<h2 id="安装">1.1 安装</h2>
+<p>Xshell是一款远程连接工具，可以在Windows系统下连接Linux服务器，安装过程很简单，直接下载安装即可。这里给出下载链接（需要科学上网）：<a target="_blank" rel="noopener" href="https://www.netsarang.com/zh/xshell/">Xshell</a></p>
+<h2 id="连接">1.2 连接</h2>
+<p>连接方法有两种，首先介绍直接在命令行里连接，直接在shell中运行如下指令：
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ssh</span> username<span class="variable">@ip</span></span><br></pre></td></tr></table></figure>
+其中username是服务器的用户名，ip是服务器的ip地址，连接成功后会提示输入密码，输入密码后就可以进入服务器了。另一种方法是在Xshell中配置好服务器的信息，然后直接点击连接即可。</p>
+第二种是在Xshell中配置好服务器的信息，详细步骤如下： 1.
+点击Xshell左上角的“文件”-&gt;“新建会话” 2.
+弹出窗口中输入主机名称，主机号，端口等信息，如图所示：
+<div data-align="center">
+<img src="/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell1.png">
+</div>
+<ol start="3" type="1">
+<li>配置用户名和密码，该方法此后记住用户名和密码后无需再次输入，如图所示：
+<div data-align="center">
+<img src="/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell2.png">
+</div></li>
+<li>双击刚刚新建的会话，即可连接服务器。</li>
+</ol>
+<h1 id="anaconda">2. Anaconda</h1>
+<h2 id="安装-1">2.1 安装</h2>
+<p>因为目前所使用的服务器无法使用外网，所以需要从本地下载好Anaconda，然后通过Xshell上传到服务器上。Anaconda的下载链接为：<a target="_blank" rel="noopener" href="https://www.anaconda.com/products/individual">Anaconda</a>，这个链接需要科学上网才能高速下载，嫌慢的也可以下清华源的：<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/">清华源</a>。</p>
+下载好后，通过Xshell上传到服务器上，单击“窗口”-&gt;“传输新建文件”，此时会提示需要XFTP，不理他，直接点取消。此时会弹出新的shell窗口，输入指令<code>lpwd</code>查看当前共享文件所需保存的的路径，如图所示：
+<div data-align="center">
+<img src="/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell3.png">
+</div>
+<p>把下载的文件复制到该文件夹下，然后在Xshell中输入指令 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">put</span> Anaconda3-<span class="number">2022</span>.<span class="number">05</span>-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
+put后的参数就是下载的Anaconda文件。上传完成后在shell中输入 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">bash</span> Anaconda3-<span class="number">2022</span>.<span class="number">05</span>-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
+一直回车然后输入yes即可安装完成。</p>
+<h2 id="配置环境变量">2.2 配置环境变量</h2>
+<p>安装完成后，需要配置环境变量，否则无法使用conda命令。在shell中用vim打开.bashrc文件
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bashrc</span><br></pre></td></tr></table></figure> 按键盘上的i键进入编辑模式，在文件末尾添加如下内容：
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> <span class="attribute">PATH</span>=<span class="string">&quot;/root/anaconda3/bin:<span class="variable">$PATH</span>&quot;</span></span><br></pre></td></tr></table></figure>
+按Esc键退出编辑模式，输入<code>:wq</code>保存并退出。然后输入
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure> 使配置生效。</p>
+<p><strong>注意：目前我还没有找到一次性全部生效的方法，所以每次在启动服务器时都需要输入source指令使环境变量生效。</strong></p>
+<p>完成后输入<code>conda -V</code>或者<code>pip -V</code>查看版本，再输入<code>python</code>查看Python版本。</p>
+<h1 id="cuda">3. CUDA</h1>
+<h2 id="安装-2">3.1 安装</h2>
+首先查看服务器的显卡型号，输入 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">nvidia-smi</span></span><br></pre></td></tr></table></figure>
+查看显卡型号，得知当前服务器显卡最高支持CUDA11.6，所以到官网下载对应版本，下载链接为：
+<a target="_blank" rel="noopener" href="https://developer.nvidia.com/cuda-11-6-1-download-archive?target_os=Linux&amp;target_arch=x86_64&amp;Distribution=Ubuntu&amp;target_version=20.04&amp;target_type=runfile_local">CUDA11.6</a>。但由于服务器无法连接外网,<code>wget</code>指令无法解析DNS地址，CUDA现在又未提供直接下载包的链接，所以只能在自己的Linux虚拟机中下载包后共享到自己的主机上。如果没有虚拟机和Linux的使用经验我这里也提供了一份安装包
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">链接：https:<span class="regexp">//</span>pan.baidu.com<span class="regexp">/s/</span><span class="number">1</span>OjPdX8T7mp5CXfph6U77JA </span><br><span class="line">提取码：<span class="number">1234</span> </span><br></pre></td></tr></table></figure> 下载好后上传至服务器，然后在shell中输入 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sh</span> cuda_11.<span class="number">6</span>.<span class="number">1</span>_450.<span class="number">51</span>.<span class="number">06</span>_linux.run</span><br></pre></td></tr></table></figure>
+在这个界面时将Driver一项按回车取消勾选，因为驱动已经安装好了
+<div data-align="center">
+<img src="/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell4.png">
+</div>
+<p>之后输入accpet后等待安装完成。</p>
+<h2 id="配置环境变量-1">3.2 配置环境变量</h2>
+<p>同样用vim打开.bashrc文件 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bashrc</span><br></pre></td></tr></table></figure> 在文件末尾添加如下内容：
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export PATH=<span class="regexp">/usr/</span>local<span class="regexp">/cuda-11.6/</span>bin:<span class="variable">$PATH</span></span><br><span class="line">export LD_LIBRARY_PATH=<span class="regexp">/usr/</span>local<span class="regexp">/cuda-11.6/</span>lib64:<span class="variable">$LD_LIBRARY_PATH</span></span><br></pre></td></tr></table></figure>
+输入<code>:wq</code>保存并退出。然后在shell输入如下代码使配置生效
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure></p>
+<h2 id="验证安装">3.3 验证安装</h2>
+在shell中输入 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">nvcc -V</span></span><br></pre></td></tr></table></figure> 出现如图所示则说明安装成功
+<div data-align="center">
+<img src="/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell5.png">
+</div>
+<h1 id="cudnn">4. cuDNN</h1>
+<h2 id="下载与安装">4.1 下载与安装</h2>
+<p>cuDNN是NVIDIA提供的深度学习加速库，需要在官网注册账号后才能下载，下载链接为：
+<a target="_blank" rel="noopener" href="https://developer.nvidia.com/rdp/cudnn-archive">cuDNN8.5.0</a>。下载好后上传至服务器。</p>
+<h2 id="解压">4.2 解压</h2>
+<p>我下载的是tar.xz格式的压缩包，所以用如下命令解压 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">tar</span> -xvf cudnn-<span class="number">11</span>.<span class="number">6</span>-linux-x64-v<span class="number">8.5.0.53</span>.tgz</span><br></pre></td></tr></table></figure>
+解压出来是一个文件夹，<code>cd</code>到这个文件夹下。在shell中输入如下命令将文件夹中的文件复制到CUDA的目录下。
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp lib<span class="regexp">/* /u</span>sr<span class="regexp">/local/</span>cuda-<span class="number">11.6</span><span class="regexp">/lib64/</span>   </span><br><span class="line">cp include<span class="regexp">/* /u</span>sr<span class="regexp">/local/</span>cuda-<span class="number">11.6</span><span class="regexp">/include/</span></span><br></pre></td></tr></table></figure> 验证cuDNN太麻烦了所以没做</p>
+<h1 id="pytorch">5. PyTorch</h1>
+<h2 id="安装-3">5.1 安装</h2>
+<p>还是那个问题，服务器不能连外网，不能直接用pip或者conda装，所以只能在自己的Linux虚拟机中下载包后共享到自己的主机上。这里提供conda和pip两个本地安装包链接，conda是.tar.bz2文件，pip是.whl文件。下载的时候记得除了Pytorch还要下载对应的torchvision和torchaudio，因为Pytorch是一个框架，不包含这两个包。
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda(清华源): https:<span class="regexp">//mi</span>rrors.tuna.tsinghua.edu.cn<span class="regexp">/anaconda/</span>cloud<span class="regexp">/pytorch/</span>linux-<span class="number">64</span>/</span><br><span class="line">pip(Pytorch官网): https:<span class="regexp">//</span>download.pytorch.org<span class="regexp">/whl/</span>cu116</span><br></pre></td></tr></table></figure>
+下载好后上传至服务器，然后在shell中输入，注意cp39是Python版本，安装的时候要看清楚自己的Python版本。
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda install <span class="attr">--use-local</span> cudnn-linux-x86_64-<span class="number">8.5</span>.<span class="number">0.96</span>_cuda11-archive<span class="selector-class">.tar</span><span class="selector-class">.xz</span></span><br><span class="line">conda install <span class="attr">--use-local</span> torchaudio-<span class="number">0.12</span>.<span class="number">1</span>-py39_cu116<span class="selector-class">.tar</span><span class="selector-class">.bz2</span></span><br><span class="line">conda install <span class="attr">--use-local</span> torchvision-<span class="number">0.13</span>.<span class="number">1</span>-py39_cu116<span class="selector-class">.tar</span>.bz2</span><br></pre></td></tr></table></figure> 或者用pip安装，这里就不贴文件名了。 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip <span class="keyword">install</span> 对应.whl文件</span><br></pre></td></tr></table></figure></p>
+<h2 id="验证安装-1">5.2 验证安装</h2>
+在shell中输入，<code>python</code>打开Python解释器，逐行输入以下代码
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torchvision</span><br><span class="line"><span class="keyword">import</span> torchaudio</span><br><span class="line"><span class="title">print</span>(torch.__version__)</span><br><span class="line"><span class="title">print</span>(torch.cuda.is_available())</span><br></pre></td></tr></table></figure> 若没有报错且输出如下则说明安装成功
+<div data-align="center">
+<img src="/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell6.png">
+</div>
+<h1 id="后续">6. 后续</h1>
+<p>后续应该会更新在VSCode中配置连接远端服务器的教程，看心情。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Xshell-Linux%E6%9C%8D%E5%8A%A1%E5%99%A8-Anaconda-Pytorch/" rel="tag"># Xshell, Linux服务器, Anaconda, Pytorch</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE2/" rel="prev" title="环境配置-VSCode篇">
+                  <i class="fa fa-chevron-left"></i> 环境配置-VSCode篇
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/03/04/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9E%E6%8E%A5%E5%A4%96%E7%BD%91/" rel="next" title="如何用自己电脑做代理连接将服务器连接到外网">
+                  如何用自己电脑做代理连接将服务器连接到外网 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Emil Jiang</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">149k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:15</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+<script>(function (w, d, s, id) {
+                if (typeof (w.webpushr) !== 'undefined') return; w.webpushr = w.webpushr || function () { (w.webpushr.q = w.webpushr.q || []).push(arguments) }; var js, fjs = d.getElementsByTagName(s)[0]; js = d.createElement(s); js.id = id; js.async = 1; js.src = "https://cdn.webpushr.com/app.min.js";fjs.parentNode.appendChild(js);}(window, document, 'script', 'webpushr-jssdk'));webpushr('setup', { 'key': 'BC2Mz-8Xgdc2VW4vFnwNfS4x0w0waPBGqPr6CGrJY-DRgFG7YNWQXjaiqikZeIrHkvuhepGdn9fWJg-vVG_Jm4Q' });</script></body>
+</html>
