@@ -22,38 +22,38 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"emil-jiang.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="LLM学习笔记：一文搞懂Embedding">
+    <meta name="description" content="LLM学习笔记：Embedding">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LLM学习笔记：一文搞懂Embedding">
-<meta property="og:url" content="http://example.com/2024/10/31/LLM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82Embedding/index.html">
+<meta property="og:title" content="LLM学习笔记：Embedding">
+<meta property="og:url" content="https://emil-jiang.github.io/2024/10/31/LLM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82Embedding/index.html">
 <meta property="og:site_name" content="记录一些东西">
-<meta property="og:description" content="LLM学习笔记：一文搞懂Embedding">
+<meta property="og:description" content="LLM学习笔记：Embedding">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2024/10/31/LLM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82Embedding/01.png">
-<meta property="og:image" content="http://example.com/2024/10/31/LLM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82Embedding/02.png">
-<meta property="og:image" content="http://example.com/2024/10/31/LLM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82Embedding/03.png">
-<meta property="og:image" content="http://example.com/2024/10/31/LLM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82Embedding/04.png">
-<meta property="og:image" content="http://example.com/2024/10/31/LLM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82Embedding/05.png">
-<meta property="og:image" content="http://example.com/2024/10/31/LLM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82Embedding/06.png">
-<meta property="og:image" content="http://example.com/2024/10/31/LLM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82Embedding/07.png">
+<meta property="og:image" content="https://emil-jiang.github.io/2024/10/31/LLM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82Embedding/01.png">
+<meta property="og:image" content="https://emil-jiang.github.io/2024/10/31/LLM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82Embedding/02.png">
+<meta property="og:image" content="https://emil-jiang.github.io/2024/10/31/LLM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82Embedding/03.png">
+<meta property="og:image" content="https://emil-jiang.github.io/2024/10/31/LLM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82Embedding/04.png">
+<meta property="og:image" content="https://emil-jiang.github.io/2024/10/31/LLM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82Embedding/05.png">
+<meta property="og:image" content="https://emil-jiang.github.io/2024/10/31/LLM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82Embedding/06.png">
+<meta property="og:image" content="https://emil-jiang.github.io/2024/10/31/LLM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82Embedding/07.png">
 <meta property="article:published_time" content="2024-10-31T09:48:30.432Z">
-<meta property="article:modified_time" content="2024-11-01T08:03:16.298Z">
+<meta property="article:modified_time" content="2024-11-01T08:06:51.394Z">
 <meta property="article:author" content="Emil Jiang">
 <meta property="article:tag" content="LLM">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2024/10/31/LLM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82Embedding/01.png">
+<meta name="twitter:image" content="https://emil-jiang.github.io/2024/10/31/LLM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82Embedding/01.png">
 
 
-<link rel="canonical" href="http://example.com/2024/10/31/LLM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82Embedding/">
+<link rel="canonical" href="https://emil-jiang.github.io/2024/10/31/LLM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82Embedding/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2024/10/31/LLM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82Embedding/","path":"2024/10/31/LLM学习笔记：一文搞懂Embedding/","title":"LLM学习笔记：一文搞懂Embedding"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://emil-jiang.github.io/2024/10/31/LLM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82Embedding/","path":"2024/10/31/LLM学习笔记：一文搞懂Embedding/","title":"LLM学习笔记：Embedding"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>LLM学习笔记：一文搞懂Embedding | 记录一些东西</title>
+<title>LLM学习笔记：Embedding | 记录一些东西</title>
   
 
 
@@ -336,7 +336,7 @@ mjx-container[display="true"] + br {
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/31/LLM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82Embedding/">
+    <link itemprop="mainEntityOfPage" href="https://emil-jiang.github.io/2024/10/31/LLM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A%E4%B8%80%E6%96%87%E6%90%9E%E6%87%82Embedding/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/violet-2.png">
@@ -349,12 +349,12 @@ mjx-container[display="true"] + br {
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="LLM学习笔记：一文搞懂Embedding | 记录一些东西">
-      <meta itemprop="description" content="LLM学习笔记：一文搞懂Embedding">
+      <meta itemprop="name" content="LLM学习笔记：Embedding | 记录一些东西">
+      <meta itemprop="description" content="LLM学习笔记：Embedding">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          LLM学习笔记：一文搞懂Embedding
+          LLM学习笔记：Embedding
         </h1>
 
         <div class="post-meta-container">
@@ -372,7 +372,7 @@ mjx-container[display="true"] + br {
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-11-01 16:03:16" itemprop="dateModified" datetime="2024-11-01T16:03:16+08:00">2024-11-01</time>
+      <time title="修改时间：2024-11-01 16:06:51" itemprop="dateModified" datetime="2024-11-01T16:06:51+08:00">2024-11-01</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -398,7 +398,7 @@ mjx-container[display="true"] + br {
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>4k</span>
+      <span>4.1k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -409,7 +409,7 @@ mjx-container[display="true"] + br {
     </span>
 </div>
 
-            <div class="post-description">LLM学习笔记：一文搞懂Embedding</div>
+            <div class="post-description">LLM学习笔记：Embedding</div>
         </div>
       </header>
 
@@ -417,7 +417,8 @@ mjx-container[display="true"] + br {
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="什么是embedding">1. 什么是Embedding</h2>
+        <p>对LLM了解太少了，之前all in CV了，该学点LLM了。</p>
+<h2 id="什么是embedding">1. 什么是Embedding</h2>
 <p>众所周知，计算机无法读懂自然语言，只能处理数值，但在现实中我们所看到的数据只有两种类型：数值型、类别型，以电影为例来说明，电影的风格、演员、导演、标签、分类等信息，这些无法用数字表示的信息全部都可以看作是类别、ID类数据；能用数字直接表示的数据就是数值型数据，类型包括用户的年龄、收入、视频播放时长、点击量、评论量等。</p>
 <p>数字信息可以直接在做一些预处理后直接送入计算机处理，而离散的类别信息常常是以文本的形式存在，将这些文本形式的数据变换为计算机看得懂的数据的过程，就叫Embedding。</p>
 <h2 id="one-hot编码">2. One-Hot编码</h2>

@@ -22,36 +22,36 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"emil-jiang.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="AI经典论文笔记-Swin Transformer：Hierarchical Vision Transformer using Shifted Windows">
 <meta property="og:type" content="article">
 <meta property="og:title" content="论文笔记-Swin Transformer：Hierarchical Vision Transformer using Shifted Windows">
-<meta property="og:url" content="http://example.com/2023/04/15/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Swin%20Transformer/index.html">
+<meta property="og:url" content="https://emil-jiang.github.io/2023/04/15/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Swin%20Transformer/index.html">
 <meta property="og:site_name" content="记录一些东西">
 <meta property="og:description" content="AI经典论文笔记-Swin Transformer：Hierarchical Vision Transformer using Shifted Windows">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2023/04/15/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Swin%20Transformer/swin%20and%20vit.png">
-<meta property="og:image" content="http://example.com/2023/04/15/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Swin%20Transformer/shifted%20windows.png">
-<meta property="og:image" content="http://example.com/2023/04/15/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Swin%20Transformer/swin%20model.png">
-<meta property="og:image" content="http://example.com/2023/04/15/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Swin%20Transformer/patch%20merging.png">
-<meta property="og:image" content="http://example.com/2023/04/15/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Swin%20Transformer/attention%20dim.png">
-<meta property="og:image" content="http://example.com/2023/04/15/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Swin%20Transformer/swin%20block.png">
-<meta property="og:image" content="http://example.com/2023/04/15/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Swin%20Transformer/mask.png">
-<meta property="og:image" content="http://example.com/2023/04/15/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Swin%20Transformer/mask-git.png">
+<meta property="og:image" content="https://emil-jiang.github.io/2023/04/15/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Swin%20Transformer/swin%20and%20vit.png">
+<meta property="og:image" content="https://emil-jiang.github.io/2023/04/15/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Swin%20Transformer/shifted%20windows.png">
+<meta property="og:image" content="https://emil-jiang.github.io/2023/04/15/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Swin%20Transformer/swin%20model.png">
+<meta property="og:image" content="https://emil-jiang.github.io/2023/04/15/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Swin%20Transformer/patch%20merging.png">
+<meta property="og:image" content="https://emil-jiang.github.io/2023/04/15/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Swin%20Transformer/attention%20dim.png">
+<meta property="og:image" content="https://emil-jiang.github.io/2023/04/15/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Swin%20Transformer/swin%20block.png">
+<meta property="og:image" content="https://emil-jiang.github.io/2023/04/15/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Swin%20Transformer/mask.png">
+<meta property="og:image" content="https://emil-jiang.github.io/2023/04/15/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Swin%20Transformer/mask-git.png">
 <meta property="article:published_time" content="2023-04-14T16:00:00.000Z">
 <meta property="article:modified_time" content="2024-10-31T09:37:43.151Z">
 <meta property="article:author" content="Emil Jiang">
 <meta property="article:tag" content="读论文">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2023/04/15/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Swin%20Transformer/swin%20and%20vit.png">
+<meta name="twitter:image" content="https://emil-jiang.github.io/2023/04/15/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Swin%20Transformer/swin%20and%20vit.png">
 
 
-<link rel="canonical" href="http://example.com/2023/04/15/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Swin%20Transformer/">
+<link rel="canonical" href="https://emil-jiang.github.io/2023/04/15/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Swin%20Transformer/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2023/04/15/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Swin%20Transformer/","path":"2023/04/15/论文笔记-Swin Transformer/","title":"论文笔记-Swin Transformer：Hierarchical Vision Transformer using Shifted Windows"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://emil-jiang.github.io/2023/04/15/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Swin%20Transformer/","path":"2023/04/15/论文笔记-Swin Transformer/","title":"论文笔记-Swin Transformer：Hierarchical Vision Transformer using Shifted Windows"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>论文笔记-Swin Transformer：Hierarchical Vision Transformer using Shifted Windows | 记录一些东西</title>
@@ -338,7 +338,7 @@ self-attention</span></a><ol class="nav-child"><li class="nav-item nav-level-4">
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2023/04/15/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Swin%20Transformer/">
+    <link itemprop="mainEntityOfPage" href="https://emil-jiang.github.io/2023/04/15/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Swin%20Transformer/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/violet-2.png">

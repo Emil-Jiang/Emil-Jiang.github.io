@@ -22,33 +22,33 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"emil-jiang.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="AI经典论文笔记-Training data-efficient image transformers &amp; distillation through attention">
 <meta property="og:type" content="article">
 <meta property="og:title" content="论文笔记-Training data-efficient image transformers &amp; distillation through attention">
-<meta property="og:url" content="http://example.com/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DEIT/index.html">
+<meta property="og:url" content="https://emil-jiang.github.io/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DEIT/index.html">
 <meta property="og:site_name" content="记录一些东西">
 <meta property="og:description" content="AI经典论文笔记-Training data-efficient image transformers &amp; distillation through attention">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DEIT/deit%20train.png">
-<meta property="og:image" content="http://example.com/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DEIT/distill%20token.png">
-<meta property="og:image" content="http://example.com/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DEIT/model%20params.png">
-<meta property="og:image" content="http://example.com/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DEIT/distillation%20effects.png">
-<meta property="og:image" content="http://example.com/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DEIT/distill%20comparison.png">
+<meta property="og:image" content="https://emil-jiang.github.io/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DEIT/deit%20train.png">
+<meta property="og:image" content="https://emil-jiang.github.io/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DEIT/distill%20token.png">
+<meta property="og:image" content="https://emil-jiang.github.io/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DEIT/model%20params.png">
+<meta property="og:image" content="https://emil-jiang.github.io/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DEIT/distillation%20effects.png">
+<meta property="og:image" content="https://emil-jiang.github.io/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DEIT/distill%20comparison.png">
 <meta property="article:published_time" content="2024-10-31T09:37:43.096Z">
 <meta property="article:modified_time" content="2024-10-31T09:37:43.096Z">
 <meta property="article:author" content="Emil Jiang">
 <meta property="article:tag" content="读论文">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DEIT/deit%20train.png">
+<meta name="twitter:image" content="https://emil-jiang.github.io/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DEIT/deit%20train.png">
 
 
-<link rel="canonical" href="http://example.com/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DEIT/">
+<link rel="canonical" href="https://emil-jiang.github.io/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DEIT/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DEIT/","path":"2024/10/31/论文笔记-DEIT/","title":"论文笔记-Training data-efficient image transformers & distillation through attention"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://emil-jiang.github.io/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DEIT/","path":"2024/10/31/论文笔记-DEIT/","title":"论文笔记-Training data-efficient image transformers & distillation through attention"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>论文笔记-Training data-efficient image transformers & distillation through attention | 记录一些东西</title>
@@ -335,7 +335,7 @@ attention</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" hr
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DEIT/">
+    <link itemprop="mainEntityOfPage" href="https://emil-jiang.github.io/2024/10/31/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-DEIT/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/violet-2.png">
@@ -450,7 +450,7 @@ model很可能将增强之后<strong>不含猫</strong>的数据预测为正确�
 Transformer直接人为使用滑动窗口引入归纳偏置，这种传递归纳偏置的方法更加隐晦。</p>
 <h2 id="方法">5. 方法</h2>
 <h3 id="vit">5.1 ViT</h3>
-<p>方法章节中首先对ViT进行了概述，这里对ViT的结构方面就不过多细讲了，对ViT还不熟悉的朋友可以参阅我讲ViT的博文：<a target="_blank" rel="noopener" href="https://emil-jiang.github.io/2023/04/13/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-An%20image%20is%20worth%2016x16%20words/">论文笔记-An
+<p>方法章节中首先对ViT进行了概述，这里对ViT的结构方面就不过多细讲了，对ViT还不熟悉的朋友可以参阅我讲ViT的博文：<a href="https://emil-jiang.github.io/2023/04/13/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-An%20image%20is%20worth%2016x16%20words/">论文笔记-An
 image is worth 16x16 words： Transformers for image recognition at
 scale</a>。</p>
 <p>文章在ViT的最后一段提到了他们做fine-tune的方法，即在低分辨率的数据集上做预训练(pre-train)，再在高分辨率的图像上做fine-tune，这样可以提高模型的准确性，也可以加速训练。但我们知道对于不同分辨率的图像，位置编码将不再统一，因此作者采用了跟ViT相同的方式，在做fine-tune时对位置编码进行插值来适应高分辨率图像。</p>
