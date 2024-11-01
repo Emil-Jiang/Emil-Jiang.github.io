@@ -7,12 +7,12 @@
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.2.0">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/project/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/project/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/project/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/project/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/project/css/main.css">
 
 
 
@@ -22,34 +22,34 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"emil-jiang.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"emil-jiang.github.io","root":"/project/","images":"/project/images","scheme":"Pisces","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/project/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/project/js/config.js"></script>
 
     <meta name="description" content="毕业设计需要用Xshell在远程配置Ubuntu服务器里配置Anaconda, Pytorch, CUDA等环境，这里记录一下配置过程。另外因为服务器无法连接外网，所以需要在本地下载好需要的软件，然后通过Xshell上传到服务器上。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="环境配置-Xshell篇">
-<meta property="og:url" content="https://emil-jiang.github.io/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:url" content="https://emil-jiang.github.io/project/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="记录一些东西">
 <meta property="og:description" content="毕业设计需要用Xshell在远程配置Ubuntu服务器里配置Anaconda, Pytorch, CUDA等环境，这里记录一下配置过程。另外因为服务器无法连接外网，所以需要在本地下载好需要的软件，然后通过Xshell上传到服务器上。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://emil-jiang.github.io/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell1.png">
-<meta property="og:image" content="https://emil-jiang.github.io/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell2.png">
-<meta property="og:image" content="https://emil-jiang.github.io/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell3.png">
-<meta property="og:image" content="https://emil-jiang.github.io/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell4.png">
-<meta property="og:image" content="https://emil-jiang.github.io/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell5.png">
-<meta property="og:image" content="https://emil-jiang.github.io/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell6.png">
+<meta property="og:image" content="https://emil-jiang.github.io/project/project/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell1.png">
+<meta property="og:image" content="https://emil-jiang.github.io/project/project/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell2.png">
+<meta property="og:image" content="https://emil-jiang.github.io/project/project/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell3.png">
+<meta property="og:image" content="https://emil-jiang.github.io/project/project/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell4.png">
+<meta property="og:image" content="https://emil-jiang.github.io/project/project/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell5.png">
+<meta property="og:image" content="https://emil-jiang.github.io/project/project/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell6.png">
 <meta property="article:published_time" content="2022-09-26T10:48:26.000Z">
 <meta property="article:modified_time" content="2024-10-31T09:37:43.073Z">
 <meta property="article:author" content="Emil Jiang">
 <meta property="article:tag" content="Xshell, Linux服务器, Anaconda, Pytorch">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://emil-jiang.github.io/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell1.png">
+<meta name="twitter:image" content="https://emil-jiang.github.io/project/project/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell1.png">
 
 
-<link rel="canonical" href="https://emil-jiang.github.io/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
+<link rel="canonical" href="https://emil-jiang.github.io/project/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://emil-jiang.github.io/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/","path":"2022/09/26/环境配置/","title":"环境配置-Xshell篇"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://emil-jiang.github.io/project/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/","path":"2022/09/26/环境配置/","title":"环境配置-Xshell篇"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>环境配置-Xshell篇 | 记录一些东西</title>
@@ -60,7 +60,7 @@
 
 
   <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
+    <link rel="stylesheet" href="/project/css/noscript.css">
   </noscript>
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
@@ -84,7 +84,7 @@
 
   <div class="site-meta">
 
-    <a href="/" class="brand" rel="start">
+    <a href="/project/" class="brand" rel="start">
       <i class="logo-line"></i>
       <p class="site-title">记录一些东西</p>
       <i class="logo-line"></i>
@@ -101,7 +101,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/project/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/project/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/project/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/project/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/project/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -165,25 +165,25 @@
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Emil Jiang"
-      src="/images/violet-2.png">
+      src="/project/images/violet-2.png">
   <p class="site-author-name" itemprop="name">Emil Jiang</p>
   <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        <a href="/archives/">
+        <a href="/project/archives/">
           <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-          <a href="/categories/">
+          <a href="/project/categories/">
         <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-          <a href="/tags/">
+          <a href="/project/tags/">
         <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
@@ -223,10 +223,10 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://emil-jiang.github.io/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
+    <link itemprop="mainEntityOfPage" href="https://emil-jiang.github.io/project/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/violet-2.png">
+      <meta itemprop="image" content="/project/images/violet-2.png">
       <meta itemprop="name" content="Emil Jiang">
     </span>
 
@@ -267,7 +267,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a>
+          <a href="/project/categories/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/" itemprop="url" rel="index"><span itemprop="name">毕业设计</span></a>
         </span>
     </span>
 
@@ -316,12 +316,12 @@
 点击Xshell左上角的“文件”-&gt;“新建会话” 2.
 弹出窗口中输入主机名称，主机号，端口等信息，如图所示：
 <div data-align="center">
-<img src="/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell1.png">
+<img src="/project/project/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell1.png">
 </div>
 <ol start="3" type="1">
 <li>配置用户名和密码，该方法此后记住用户名和密码后无需再次输入，如图所示：
 <div data-align="center">
-<img src="/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell2.png">
+<img src="/project/project/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell2.png">
 </div></li>
 <li>双击刚刚新建的会话，即可连接服务器。</li>
 </ol>
@@ -330,7 +330,7 @@
 <p>因为目前所使用的服务器无法使用外网，所以需要从本地下载好Anaconda，然后通过Xshell上传到服务器上。Anaconda的下载链接为：<a target="_blank" rel="noopener" href="https://www.anaconda.com/products/individual">Anaconda</a>，这个链接需要科学上网才能高速下载，嫌慢的也可以下清华源的：<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/">清华源</a>。</p>
 下载好后，通过Xshell上传到服务器上，单击“窗口”-&gt;“传输新建文件”，此时会提示需要XFTP，不理他，直接点取消。此时会弹出新的shell窗口，输入指令<code>lpwd</code>查看当前共享文件所需保存的的路径，如图所示：
 <div data-align="center">
-<img src="/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell3.png">
+<img src="/project/project/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell3.png">
 </div>
 <p>把下载的文件复制到该文件夹下，然后在Xshell中输入指令 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">put</span> Anaconda3-<span class="number">2022</span>.<span class="number">05</span>-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
 put后的参数就是下载的Anaconda文件。上传完成后在shell中输入 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">bash</span> Anaconda3-<span class="number">2022</span>.<span class="number">05</span>-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
@@ -351,7 +351,7 @@ put后的参数就是下载的Anaconda文件。上传完成后在shell中输入 
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">链接：https:<span class="regexp">//</span>pan.baidu.com<span class="regexp">/s/</span><span class="number">1</span>OjPdX8T7mp5CXfph6U77JA </span><br><span class="line">提取码：<span class="number">1234</span> </span><br></pre></td></tr></table></figure> 下载好后上传至服务器，然后在shell中输入 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sh</span> cuda_11.<span class="number">6</span>.<span class="number">1</span>_450.<span class="number">51</span>.<span class="number">06</span>_linux.run</span><br></pre></td></tr></table></figure>
 在这个界面时将Driver一项按回车取消勾选，因为驱动已经安装好了
 <div data-align="center">
-<img src="/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell4.png">
+<img src="/project/project/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell4.png">
 </div>
 <p>之后输入accpet后等待安装完成。</p>
 <h2 id="配置环境变量-1">3.2 配置环境变量</h2>
@@ -362,7 +362,7 @@ put后的参数就是下载的Anaconda文件。上传完成后在shell中输入 
 <h2 id="验证安装">3.3 验证安装</h2>
 在shell中输入 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">nvcc -V</span></span><br></pre></td></tr></table></figure> 出现如图所示则说明安装成功
 <div data-align="center">
-<img src="/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell5.png">
+<img src="/project/project/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell5.png">
 </div>
 <h1 id="cudnn">4. cuDNN</h1>
 <h2 id="下载与安装">4.1 下载与安装</h2>
@@ -382,7 +382,7 @@ put后的参数就是下载的Anaconda文件。上传完成后在shell中输入 
 在shell中输入，<code>python</code>打开Python解释器，逐行输入以下代码
 <figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> torchvision</span><br><span class="line"><span class="keyword">import</span> torchaudio</span><br><span class="line"><span class="title">print</span>(torch.__version__)</span><br><span class="line"><span class="title">print</span>(torch.cuda.is_available())</span><br></pre></td></tr></table></figure> 若没有报错且输出如下则说明安装成功
 <div data-align="center">
-<img src="/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell6.png">
+<img src="/project/project/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/xshell6.png">
 </div>
 <h1 id="后续">6. 后续</h1>
 <p>后续应该会更新在VSCode中配置连接远端服务器的教程，看心情。</p>
@@ -395,19 +395,19 @@ put后的参数就是下载的Anaconda文件。上传完成后在shell中输入 
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Xshell-Linux%E6%9C%8D%E5%8A%A1%E5%99%A8-Anaconda-Pytorch/" rel="tag"># Xshell, Linux服务器, Anaconda, Pytorch</a>
+              <a href="/project/tags/Xshell-Linux%E6%9C%8D%E5%8A%A1%E5%99%A8-Anaconda-Pytorch/" rel="tag"># Xshell, Linux服务器, Anaconda, Pytorch</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE2/" rel="prev" title="环境配置-VSCode篇">
+                <a href="/project/2022/09/26/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE2/" rel="prev" title="环境配置-VSCode篇">
                   <i class="fa fa-chevron-left"></i> 环境配置-VSCode篇
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2023/03/04/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9E%E6%8E%A5%E5%A4%96%E7%BD%91/" rel="next" title="如何用自己电脑做代理连接将服务器连接到外网">
+                <a href="/project/2023/03/04/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9E%E6%8E%A5%E5%A4%96%E7%BD%91/" rel="next" title="如何用自己电脑做代理连接将服务器连接到外网">
                   如何用自己电脑做代理连接将服务器连接到外网 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
@@ -478,17 +478,17 @@ put后的参数就是下载的Anaconda文件。上传完成后在shell中输入 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+<script src="/project/js/comments.js"></script><script src="/project/js/utils.js"></script><script src="/project/js/motion.js"></script><script src="/project/js/next-boot.js"></script>
 
   
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
-<script src="/js/third-party/search/local-search.js"></script>
+<script src="/project/js/third-party/search/local-search.js"></script>
 
 
 
-  <script src="/js/third-party/fancybox.js"></script>
+  <script src="/project/js/third-party/fancybox.js"></script>
 
-  <script src="/js/third-party/pace.js"></script>
+  <script src="/project/js/third-party/pace.js"></script>
 
   
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -499,7 +499,7 @@ put后的参数就是下载的Anaconda文件。上传完成后在shell中输入 
   
 
   <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
-<script src="/js/third-party/math/mathjax.js"></script>
+<script src="/project/js/third-party/math/mathjax.js"></script>
 
 
 

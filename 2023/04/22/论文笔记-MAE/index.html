@@ -7,12 +7,12 @@
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.2.0">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/project/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/project/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/project/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/project/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/project/css/main.css">
 
 
 
@@ -22,30 +22,30 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"emil-jiang.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"emil-jiang.github.io","root":"/project/","images":"/project/images","scheme":"Pisces","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/project/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/project/js/config.js"></script>
 
     <meta name="description" content="AI经典论文笔记-Masked Autoencoders Are Scalable Vision Learners">
 <meta property="og:type" content="article">
 <meta property="og:title" content="论文笔记-Masked Autoencoders Are Scalable Vision Learners">
-<meta property="og:url" content="https://emil-jiang.github.io/2023/04/22/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-MAE/index.html">
+<meta property="og:url" content="https://emil-jiang.github.io/project/2023/04/22/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-MAE/index.html">
 <meta property="og:site_name" content="记录一些东西">
 <meta property="og:description" content="AI经典论文笔记-Masked Autoencoders Are Scalable Vision Learners">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://emil-jiang.github.io/2023/04/22/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-MAE/mae%20results.png">
-<meta property="og:image" content="https://emil-jiang.github.io/2023/04/22/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-MAE/mae%20structure.png">
+<meta property="og:image" content="https://emil-jiang.github.io/project/project/2023/04/22/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-MAE/mae%20results.png">
+<meta property="og:image" content="https://emil-jiang.github.io/project/project/2023/04/22/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-MAE/mae%20structure.png">
 <meta property="article:published_time" content="2023-04-21T16:00:00.000Z">
 <meta property="article:modified_time" content="2024-10-31T09:37:43.111Z">
 <meta property="article:author" content="Emil Jiang">
 <meta property="article:tag" content="读论文">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://emil-jiang.github.io/2023/04/22/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-MAE/mae%20results.png">
+<meta name="twitter:image" content="https://emil-jiang.github.io/project/project/2023/04/22/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-MAE/mae%20results.png">
 
 
-<link rel="canonical" href="https://emil-jiang.github.io/2023/04/22/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-MAE/">
+<link rel="canonical" href="https://emil-jiang.github.io/project/2023/04/22/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-MAE/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://emil-jiang.github.io/2023/04/22/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-MAE/","path":"2023/04/22/论文笔记-MAE/","title":"论文笔记-Masked Autoencoders Are Scalable Vision Learners"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://emil-jiang.github.io/project/2023/04/22/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-MAE/","path":"2023/04/22/论文笔记-MAE/","title":"论文笔记-Masked Autoencoders Are Scalable Vision Learners"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>论文笔记-Masked Autoencoders Are Scalable Vision Learners | 记录一些东西</title>
@@ -56,7 +56,7 @@
 
 
   <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
+    <link rel="stylesheet" href="/project/css/noscript.css">
   </noscript>
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
@@ -192,7 +192,7 @@ mjx-container[display="true"] + br {
 
   <div class="site-meta">
 
-    <a href="/" class="brand" rel="start">
+    <a href="/project/" class="brand" rel="start">
       <i class="logo-line"></i>
       <p class="site-title">记录一些东西</p>
       <i class="logo-line"></i>
@@ -209,7 +209,7 @@ mjx-container[display="true"] + br {
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/project/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/project/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/project/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/project/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/project/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -273,25 +273,25 @@ mjx-container[display="true"] + br {
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="Emil Jiang"
-      src="/images/violet-2.png">
+      src="/project/images/violet-2.png">
   <p class="site-author-name" itemprop="name">Emil Jiang</p>
   <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        <a href="/archives/">
+        <a href="/project/archives/">
           <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-          <a href="/categories/">
+          <a href="/project/categories/">
         <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-          <a href="/tags/">
+          <a href="/project/tags/">
         <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
@@ -331,10 +331,10 @@ mjx-container[display="true"] + br {
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://emil-jiang.github.io/2023/04/22/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-MAE/">
+    <link itemprop="mainEntityOfPage" href="https://emil-jiang.github.io/project/2023/04/22/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-MAE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/violet-2.png">
+      <meta itemprop="image" content="/project/images/violet-2.png">
       <meta itemprop="name" content="Emil Jiang">
     </span>
 
@@ -375,7 +375,7 @@ mjx-container[display="true"] + br {
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">论文笔记</span></a>
+          <a href="/project/categories/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">论文笔记</span></a>
         </span>
     </span>
 
@@ -437,11 +437,11 @@ ViT-Huge在只使用ImageNet-1K训练的情况下取得了87.8%的准确率。�
 <p>基于上述分析，原文提出了一种可扩展的带掩码的自编码器MAE。它使用了非对称的encoder-decoder结构，encoder只作用于可见的patches而decoder尝试恢复像素。同时mask掉大量的patches，这个操作可以创建一个双赢的局面：既减少了计算量，又提高了准确性。</p>
 <p>导言的最后卖了一下结果，说明MAE不只是在图像分类上效果优秀，在迁移学习上，例如目标检测和实例分割，也可以取得好结果。下图展示原文中MAE的结果，可以看出在缺少大量的图像信息的情况下依然可以还原的很好。</p>
 <div data-align="center">
-<img src="/2023/04/22/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-MAE/mae results.png" alt="MAE在ImageNet上的测试结果">
+<img src="/project/project/2023/04/22/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-MAE/mae results.png" alt="MAE在ImageNet上的测试结果">
 </div>
 <h2 id="方法">4. 方法</h2>
 <div data-align="center">
-<img src="/2023/04/22/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-MAE/mae structure.png" alt="MAE模型架构">
+<img src="/project/project/2023/04/22/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-MAE/mae structure.png" alt="MAE模型架构">
 </div>
 <h3 id="masking">4.1 Masking</h3>
 <p>跟ViT相同，MAE首先将图片分为若干patches，然后随机采样其中的少量占比的patches即可，其余部分都。需要注意的是，MAE对大多数patches都做了掩码，这样可以消除图像的冗余信息，避免模型只需要用简单的插值就可以还原图像。同时大规模的掩码使得decoder的架构可以变得很简单，因为encoder只关心没有被掩码的部分。</p>
@@ -467,19 +467,19 @@ MSE），即计算输出像素与被mask像素的L2误差。</p>
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E8%AF%BB%E8%AE%BA%E6%96%87/" rel="tag"># 读论文</a>
+              <a href="/project/tags/%E8%AF%BB%E8%AE%BA%E6%96%87/" rel="tag"># 读论文</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2023/04/15/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Swin%20Transformer/" rel="prev" title="论文笔记-Swin Transformer：Hierarchical Vision Transformer using Shifted Windows">
+                <a href="/project/2023/04/15/%E8%AE%BA%E6%96%87%E7%AC%94%E8%AE%B0-Swin%20Transformer/" rel="prev" title="论文笔记-Swin Transformer：Hierarchical Vision Transformer using Shifted Windows">
                   <i class="fa fa-chevron-left"></i> 论文笔记-Swin Transformer：Hierarchical Vision Transformer using Shifted Windows
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2023/06/01/%E6%8A%80%E6%9C%AF%E6%9D%82%E9%A1%B9-Pytorch%E4%B8%ADcross_entropy%E7%9A%84%E7%94%A8%E6%B3%95/" rel="next" title="Pytorch中Cross Entropy的用法">
+                <a href="/project/2023/06/01/%E6%8A%80%E6%9C%AF%E6%9D%82%E9%A1%B9-Pytorch%E4%B8%ADcross_entropy%E7%9A%84%E7%94%A8%E6%B3%95/" rel="next" title="Pytorch中Cross Entropy的用法">
                   Pytorch中Cross Entropy的用法 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
@@ -550,17 +550,17 @@ MSE），即计算输出像素与被mask像素的L2误差。</p>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+<script src="/project/js/comments.js"></script><script src="/project/js/utils.js"></script><script src="/project/js/motion.js"></script><script src="/project/js/next-boot.js"></script>
 
   
 <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
-<script src="/js/third-party/search/local-search.js"></script>
+<script src="/project/js/third-party/search/local-search.js"></script>
 
 
 
-  <script src="/js/third-party/fancybox.js"></script>
+  <script src="/project/js/third-party/fancybox.js"></script>
 
-  <script src="/js/third-party/pace.js"></script>
+  <script src="/project/js/third-party/pace.js"></script>
 
   
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -571,7 +571,7 @@ MSE），即计算输出像素与被mask像素的L2误差。</p>
   
 
   <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
-<script src="/js/third-party/math/mathjax.js"></script>
+<script src="/project/js/third-party/math/mathjax.js"></script>
 
 
 
