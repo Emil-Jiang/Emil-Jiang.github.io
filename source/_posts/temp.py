@@ -1,10 +1,1 @@
-from sympy import symbols, z, inverse_z_transform
-# 定义变量和变换表达式
-z = symbols('z')
-X_z = 1/(z-1)
-
-# 进行Z变换
-x_n = inverse_z_transform(X_z, z, n)
-x_n_frac = inverse_z_transform(1/X_z, z, n)
-
-print(x_n,x_n_frac)
+print(len(['workdir/result_imgs/ks/all/000026.jpg', 'workdir/result_imgs/ks/all/000033.jpg', 'workdir/result_imgs/ks/all/000031.jpg', 'workdir/result_imgs/ks/all/000025.jpg', 'workdir/result_imgs/ks/all/000024.jpg', 'workdir/result_imgs/ks/all/000030.jpg', 'workdir/result_imgs/ks/all/000018.jpg', 'workdir/result_imgs/ks/all/000034.jpg', 'workdir/result_imgs/ks/all/000008.jpg', 'workdir/result_imgs/ks/all/000021.jpg', 'workdir/result_imgs/ks/all/000023.jpg', 'workdir/result_imgs/ks/all/000037.jpg', 'workdir/result_imgs/ks/all/000007.jpg', 'workdir/result_imgs/ks/all/000013.jpg', 'workdir/result_imgs/ks/all/000012.jpg', 'workdir/result_imgs/ks/all/000010.jpg', 'workdir/result_imgs/ks/all/000011.jpg', 'workdir/result_imgs/ks/all/000039.jpg', 'workdir/result_imgs/ks/all/000001.jpg', 'workdir/result_imgs/ks/all/000028.jpg', 'workdir/result_imgs/ks/all/000000.jpg', 'workdir/result_imgs/ks/all/000002.jpg', 'workdir/result_imgs/ks/all/000017.jpg', 'workdir/result_imgs/ks/all/000003.jpg']))

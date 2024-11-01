@@ -13,7 +13,7 @@ timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: https://emil-jiang.github.io/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -136,6 +136,14 @@ webpushr:
 # 链接: https://blog.ccknbc.cc/posts/hexo-webpushr-notification/
 # 来源: CC的部落格
 # 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+# Security
+encrypt: # hexo-blog-encrypt
+  enable: true
+  message: 当前文章暂不对外可见，请输入密码后查看！
+  wrong_pass_message: 抱歉，您输入的密码错误，请检查后重新输入。
+  wrong_hash_message: 抱歉, 当前文章不能被校验, 不过您还是可以看看解密后的内容。
+
 
 ## Themes: https://hexo.io/themes/
 theme: next

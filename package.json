@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "hexo": "^6.2.0",
-    "hexo-asset-image": "^1.0.0",
+    "hexo-asset-image": "github:CodeFalling/hexo-asset-image",
+    "hexo-blog-encrypt": "^3.1.9",
     "hexo-deployer-git": "^4.0.0",
     "hexo-filter-mathjax": "^0.8.1",
     "hexo-generator-archive": "^1.0.0",
@@ -32,6 +33,8 @@
     "hexo-symbols-count-time": "^0.7.1",
     "hexo-theme-landscape": "^0.0.3",
     "hexo-theme-next": "^8.12.3",
-    "hexo-webpushr-notification": "^0.1.2"
+    "hexo-webpushr-notification": "^0.1.16",
+    "install": "^0.13.0",
+    "npm": "^10.9.0"
   }
 }
