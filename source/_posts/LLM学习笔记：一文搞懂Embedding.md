@@ -177,7 +177,20 @@ I eat a big apple every day.
 
 {% endnote %}
 
-## 4. 实践
+## 4. Embedding与Token
+
+Token指的是LLM能处理的最小文本单位，它可以是一个词，一部分词或者标点符号等。**Token的本质就是分词器的输出**，它不涉及到上下文的关系，每个Token都是独立的。文本转化为Token的过程叫做Tokenize，当然也有其对应的工具Tokenizer。Tokenizer有很多算法，可以分为基于学习的和非学习的。
+
+对于一些基于规则或预定义词典的简单 Tokenizer，可能不需要太多的学习过程，它们主要依据固定的模式或词汇表来进行分词操作。然而，在更复杂和先进的自然语言处理任务中，使用的 Tokenizer 通常是基于深度学习模型的，例如字节对编码（Byte-Pair Encoding，BPE）或WordPiece 等。这些 Tokenizer 通常需要在大规模的文本数据上进行学习，以自适应地捕捉语言的模式和规律，从而更有效地对文本进行分词。学习的目的是使 Tokenizer 能够更好地处理词汇的多样性、新出现的词汇、词形变化等复杂情况，提高分词的准确性和对各种文本的适应性。
+
+{% note warning %}
+
+
+从Tokens到Embedding的过渡代表了从语言的离散表示向细致、连续和具有上下文意识的语义空间的移动。
+
+{% endnote %}
+
+## 5. 实践
 
 Pytorch直接将Embedding封装为了一个类，调用很方便。其参数如下
 
@@ -225,3 +238,4 @@ tensor([[ 1.2898,  1.3373,  0.2577,  0.4610],
 `torch.nn.embedding`只是初始化了一个embedding矩阵，可以看见`grad_fn`这一项是可以backward的，也就是说embedding可以通过Pytorch提供的`loss.backward()`进行反向传播训练。
 
 {% endnote %}
+
