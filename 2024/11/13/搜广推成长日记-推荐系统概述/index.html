@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"emil-jiang.github.io","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="推荐系统第一章：推荐系统概述">
+<meta property="og:type" content="article">
+<meta property="og:title" content="推荐系统第一章：推荐系统概述">
+<meta property="og:url" content="https://emil-jiang.github.io/2024/11/13/%E6%90%9C%E5%B9%BF%E6%8E%A8%E6%88%90%E9%95%BF%E6%97%A5%E8%AE%B0-%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/index.html">
+<meta property="og:site_name" content="记录一些东西">
+<meta property="og:description" content="推荐系统第一章：推荐系统概述">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://emil-jiang.github.io/2024/11/13/%E6%90%9C%E5%B9%BF%E6%8E%A8%E6%88%90%E9%95%BF%E6%97%A5%E8%AE%B0-%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/001.png">
+<meta property="og:image" content="https://emil-jiang.github.io/2024/11/13/%E6%90%9C%E5%B9%BF%E6%8E%A8%E6%88%90%E9%95%BF%E6%97%A5%E8%AE%B0-%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/002.png">
+<meta property="og:image" content="https://emil-jiang.github.io/2024/11/13/%E6%90%9C%E5%B9%BF%E6%8E%A8%E6%88%90%E9%95%BF%E6%97%A5%E8%AE%B0-%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/003.png">
+<meta property="og:image" content="https://emil-jiang.github.io/2024/11/13/%E6%90%9C%E5%B9%BF%E6%8E%A8%E6%88%90%E9%95%BF%E6%97%A5%E8%AE%B0-%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/004.png">
+<meta property="article:published_time" content="2024-11-13T02:50:19.359Z">
+<meta property="article:modified_time" content="2024-11-13T03:56:12.523Z">
+<meta property="article:author" content="Emil Jiang">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://emil-jiang.github.io/2024/11/13/%E6%90%9C%E5%B9%BF%E6%8E%A8%E6%88%90%E9%95%BF%E6%97%A5%E8%AE%B0-%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/001.png">
+
+
+<link rel="canonical" href="https://emil-jiang.github.io/2024/11/13/%E6%90%9C%E5%B9%BF%E6%8E%A8%E6%88%90%E9%95%BF%E6%97%A5%E8%AE%B0-%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://emil-jiang.github.io/2024/11/13/%E6%90%9C%E5%B9%BF%E6%8E%A8%E6%88%90%E9%95%BF%E6%97%A5%E8%AE%B0-%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/","path":"2024/11/13/搜广推成长日记-推荐系统概述/","title":"推荐系统第一章：推荐系统概述"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>推荐系统第一章：推荐系统概述 | 记录一些东西</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">记录一些东西</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A8%E8%8D%90%E5%92%8C%E6%90%9C%E7%B4%A2%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">1. 推荐和搜索的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84"><span class="nav-text">2. 推荐系统的系统架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A6%BB%E7%BA%BF%E5%B1%82"><span class="nav-text">2.1 离线层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%91%E7%BA%BF%E5%B1%82"><span class="nav-text">2.2 近线层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8%E7%BA%BF%E5%B1%82"><span class="nav-text">2.3 在线层</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%AE%97%E6%B3%95%E6%9E%B6%E6%9E%84"><span class="nav-text">3. 推荐系统的算法架构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AC%E5%9B%9E"><span class="nav-text">3.1 召回</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B2%97%E6%8E%92"><span class="nav-text">3.2 粗排</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B2%BE%E6%8E%92"><span class="nav-text">3.3 精排</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%87%8D%E6%8E%92"><span class="nav-text">3.4 重排</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Emil Jiang"
+      src="/images/violet-2.png">
+  <p class="site-author-name" itemprop="name">Emil Jiang</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://emil-jiang.github.io/2024/11/13/%E6%90%9C%E5%B9%BF%E6%8E%A8%E6%88%90%E9%95%BF%E6%97%A5%E8%AE%B0-%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/violet-2.png">
+      <meta itemprop="name" content="Emil Jiang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录一些东西">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="推荐系统第一章：推荐系统概述 | 记录一些东西">
+      <meta itemprop="description" content="推荐系统第一章：推荐系统概述">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          推荐系统第一章：推荐系统概述
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-11-13 10:50:19 / 修改时间：11:56:12" itemprop="dateCreated datePublished" datetime="2024-11-13T10:50:19+08:00">2024-11-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%90%9C%E5%B9%BF%E6%8E%A8%E6%88%90%E9%95%BF%E6%97%A5%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">搜广推成长日记</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>3 分钟</span>
+    </span>
+</div>
+
+            <div class="post-description">推荐系统第一章：推荐系统概述</div>
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>学习搜广推主要根据FunRec的教程，面向有机器学习、深度学习基础的搜广推学习笔记。
+地址：https://github.com/datawhalechina/fun-rec/
+本博客系列所有笔记都是对其中的重点内容进行总结。
+如有侵权，请联系我删除。</p>
+<h2 id="推荐和搜索的区别">1. 推荐和搜索的区别</h2>
+<p>节选自源笔记第一章</p>
+<p>搜索和推荐都是解决互联网大数据时代信息过载的手段，但是它们也存在着许多的不同：</p>
+<ul>
+<li><strong>用户意图：</strong>
+搜索时的用户意图是非常明确的，用户通过查询的关键词主动发起搜索请求。对于推荐而言，用户的需求是不明确的，推荐系统在通过对用户历史兴趣的分析给用户推荐他们可能感兴趣的内容。</li>
+<li><strong>个性化程度：</strong>
+对于搜索而言，由于限定的了搜索词，所以展示的内容对于用户来说是有标准答案的，所以搜索的个性化程度较低。而对于推荐来说，推荐的内容本身就是没有标准答案的，每个人都有不同的兴趣，所以每个人展示的内容，个性化程度比较强。</li>
+<li><strong>优化目标：</strong>
+对于搜索系统而言，更希望可以快速地、准确地定位到标准答案，所以希望搜索结果中答案越靠前越好，通常评价指标有：归一化折损累计收益（NDCG）、精确率（Precision）和召回率（Recall）。对于推荐系统而言，因为没有标准的答案，所以优化目标可能会更宽泛。例如用户停留时长、点击、多样性，评分等。不同的优化目标又可以拆解成具体的不同的评价指标。</li>
+<li><strong>马太效应和长尾理论：</strong>
+对于搜索系统来说，用户的点击基本都集中在排列靠前的内容上，对于排列靠后的很少会被关注，这就是马太效应。而对于推荐系统来说，热门物品被用户关注更多，冷门物品不怎么被关注的现象也是存在的，所以也存在马太效应。此外，在推荐系统中，冷门物品的数量远远高于热门物品的数量，所以物品的长尾性非常明显。</li>
+</ul>
+<h2 id="推荐系统的系统架构">2. 推荐系统的系统架构</h2>
+<p>目前主流的推荐系统架构是由Netflix提出的，分为三层：<strong>离线层、近线层和在线层</strong>。它们的作用和特点分别是</p>
+<ul>
+<li>离线层：不用实时数据，不提供实时响应。主要用于管理离线作业的部分架构，对算法复杂度和处理数据量限制较少，但数据很容易过时。</li>
+<li>近线层：使用实时数据，不保证实时响应。主要用于结合和管理在线和离线的计算过程，可以执行类似在线计算方法，但不必以实时方式完成，介于离线和在线之间。</li>
+<li>在线层：使用实时数据，保证实时响应。主要用于及时响应最近的事件和用户交互，对算法复杂性和处理数据量有限制。</li>
+</ul>
+<p>如图所示</p>
+<div data-align="center">
+<img src="/2024/11/13/%E6%90%9C%E5%B9%BF%E6%8E%A8%E6%88%90%E9%95%BF%E6%97%A5%E8%AE%B0-%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/001.png" alt="推荐系统整体架构">
+</div>
+<p>整体分为三部分：客户端及服务器实时处理数据、流处理平台准实时处理数据和大数据平台离线处理数据。</p>
+<ul>
+<li>客户端及服务器实时处理数据：这部分一般是后端和客户端完成，又叫埋点和记录点。就是工程师记录用户数据的过程。例如用户交互的内容、使用设备、停留时间、发生时间等。</li>
+<li>流处理平台准实时处理数据：这部分本质上也是记录数据，但记录的是存在时间误差的实时数据，也叫准实时。在推荐领域中，只有<strong>用户行为数据</strong>类别能被称为准实时数据。例如用户在看当前内容之前还看过哪些内容，和哪些内容有交互。一般通过消息队列+在线缓存的方式做成准实时。</li>
+<li>大数据平台离线数据处理：离线就是线下处理数据，一般来说这部分才是数据处理的大头，也就是例如增查删改之类的操作，非常耗时，就放到离线层。</li>
+</ul>
+<h3 id="离线层">2.1 离线层</h3>
+<p>离线层主要负责</p>
+<ol type="1">
+<li>数据处理和存储；</li>
+<li>特征工程和离线特征计算；</li>
+<li>离线模型训练；</li>
+</ol>
+<p>离线层不需要实时数据，也不提供实时服务。一个离线层的架构如图所示，可以看出离线层是最接近平常学习的机器学习中处理数据、训练模型这种任务的。</p>
+<div data-align="center">
+<img src="/2024/11/13/%E6%90%9C%E5%B9%BF%E6%8E%A8%E6%88%90%E9%95%BF%E6%97%A5%E8%AE%B0-%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/002.png">
+</div>
+<p>离线层面临的数据量级是最大的，面临主要的问题是海量数据存储、大规模特征工程、多机分布式机器学习模型训练。目前主流的做法是HDFS，收集到我们所有的业务数据，通过HIVE等工具，从全量数据中抽取出我们需要的数据，进行相应的加工，离线阶段主流使用的分布式框架一般是Spark。</p>
+<h3 id="近线层">2.2 近线层</h3>
+<p>近线层主要负责</p>
+<ol type="1">
+<li>特征的事实更新计算：例如统计用户对不同类型的<a target="_blank" rel="noopener" href="https://www.adjust.com/zh/glossary/ctr/">CTR</a>，如果用离线层计算好的特征很容易出现特征分布不一致，因此可以按照用户的实时兴趣来计算。</li>
+<li>实时训练数据获取：例如在使用DIN、DSIN这类网络会依赖于用户的实时兴趣变化，用户几分钟前的点击就可以通过近线层获取特征输入模型</li>
+<li>模型实时训练：可以对模型进行online训练更新，实时推送到线上。</li>
+</ol>
+<p>一个近线层结构如图所示</p>
+<div data-align="center">
+<img src="/2024/11/13/%E6%90%9C%E5%B9%BF%E6%8E%A8%E6%88%90%E9%95%BF%E6%97%A5%E8%AE%B0-%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/003.png">
+</div>
+<h3 id="在线层">2.3 在线层</h3>
+<p>在线层主要负责</p>
+<ol type="1">
+<li>模型在线服务，包括召回和排序。</li>
+<li>在线特征快速处理拼接，即根据传入的用户ID和场景，读取特征和处理特征。</li>
+<li>AB实验或分流，即根据不同用户采用不一样的模型，比如冷启动用户和正常服务模型。</li>
+<li>运筹优化和业务干预：比如要对特殊商家流量扶持、对某些内容限流。</li>
+</ol>
+<p>在线层最大的问题就是对实时性要求特别高，一般来说是几十毫秒，这就限制了我们能做的工作，很多任务往往无法及时完成，需要近线层协助我们做。</p>
+<h2 id="推荐系统的算法架构">3. 推荐系统的算法架构</h2>
+<p>推荐系统算法架构主要分为：召回、粗排、精排和重排。</p>
+<div data-align="center">
+<img src="/2024/11/13/%E6%90%9C%E5%B9%BF%E6%8E%A8%E6%88%90%E9%95%BF%E6%97%A5%E8%AE%B0-%E6%8E%A8%E8%8D%90%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/004.png">
+</div>
+<h3 id="召回">3.1 召回</h3>
+<p><strong>召回，指从推荐池候选集中选取海量的item送给后续的排序模块</strong>。由于召回模块需要在线输出，因此必须具备轻量和低延迟的特点。召回不需要特别精确，但不能遗漏。</p>
+<p>召回的作用就是做候选集筛选，保证精排层的时间效果最大化。另外还可以减少排序阶段拟合多目标的压力，比如召回阶段需要在保证item质量的基础上注重覆盖率的多样性。</p>
+<p>目前主要采用多路召回解决范式，分为个性化召回和非个性化召回。个性化召回又有content-based、behavior-based、feature-based等多种方式。</p>
+<h3 id="粗排">3.2 粗排</h3>
+<p><strong>粗排的原因是有时候召回的结果还是太多，精排层速度还是跟不上，所以加入粗排</strong>。粗排可以理解为精排前的一轮过滤机制，减轻精排模块的压力。粗排介于召回和精排之间，要同时兼顾精准性和低延迟。目前粗排一般也都模型化了，其训练样本类似于精排，选取曝光点击为正样本，曝光未点击为负样本。但由于粗排一般面向上万的候选集，而精排只有几百上千，其解空间大很多。</p>
+<h3 id="精排">3.3 精排</h3>
+<p>精排层，也是我们学习推荐入门最常常接触的层，我们所熟悉的算法很大一部分都来自精排层。这一层的任务是获取粗排模块的结果，对候选集进行打分和排序。精排需要在最大时延允许的情况下，保证打分的精准性，是整个系统中至关重要的一个模块，也是最复杂，研究最多的一个模块。</p>
+<p>精排是推荐系统各层级中最纯粹的一层，他的目标比较单一且集中，一门心思的实现目标的调优即可。最开始的时候精排模型的常见目标是CTR,后续逐渐发展了CVR等多类目标。精排和粗排层的基本目标是一致的，都是对商品集合进行排序，但是和粗排不同的是，精排只需要对少量的商品(即粗排输出的商品集合的topN)进行排序即可。因此，精排中可以使用比粗排更多的特征，更复杂的模型和更精细的策略（用户的特征和行为在该层的大量使用和参与也是基于这个原因）。</p>
+<p>精排层模型是推荐系统中涵盖的研究方向最多，有非常多的子领域值得研究探索，这也是推荐系统中技术含量最高的部分，毕竟它是直接面对用户，产生的结果对用户影响最大的一层。目前精排层深度学习已经一统天下了，精排阶段采用的方案相对通用，首先一天的样本量是几十亿的级别，我们要解决的是样本规模的问题，尽量多的喂给模型去记忆，另一个方面时效性上，用户的反馈产生的时候，怎么尽快的把新的反馈给到模型里去，学到最新的知识。</p>
+<h3 id="重排">3.4 重排</h3>
+<p>常见的有三种优化目标：Point Wise、Pair Wise 和 List
+Wise。重排序阶段对精排生成的Top-N个物品的序列进行重新排序，生成一个Top-K个物品的序列，作为排序系统最后的结果，直接展现给用户。重排序的原因是因为多个物品之间往往是相互影响的，而精排序是根据PointWise得分，容易造成推荐结果同质化严重，有很多冗余信息。而重排序面对的挑战就是海量状态空间如何求解的问题，一般在精排层我们使用AUC作为指标，但是在重排序更多关注NDCG等指标。</p>
+<p>重排序在业务中，获取精排的排序结果，还会根据一些策略、运营规则参与排序，比如强制去重、间隔排序、流量扶持等、运营策略、多样性、context上下文等，重新进行一个微调。重排序更多的是List
+Wise作为优化目标的，它关注的是列表中商品顺序的问题来优化模型，但是一般List
+Wise因为状态空间大，存在训练速度慢的问题。</p>
+<p>由于精排模型一般比较复杂，基于系统时延考虑，一般采用point-wise方式，并行对每个item进行打分。这就使得打分时缺少了上下文感知能力。用户最终是否会点击购买一个商品，除了和它自身有关外，和它周围其他的item也息息相关。重排一般比较轻量，可以加入上下文感知能力，提升推荐整体算法效率。比如三八节对美妆类目商品提权，类目打散、同图打散、同卖家打散等保证用户体验措施。重排中规则比较多，但目前也有不少基于模型来提升重排效果的方案。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/11/04/LLM%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9ALoRA/" rel="prev" title="LLM学习笔记：LoRA">
+                  <i class="fa fa-chevron-left"></i> LLM学习笔记：LoRA
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Emil Jiang</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">155k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:21</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+  <script src="/js/third-party/fancybox.js"></script>
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+<script>(function (w, d, s, id) {
+        if (typeof (w.webpushr) !== 'undefined') return;
+        w.webpushr = w.webpushr || function () { (w.webpushr.q = w.webpushr.q || []).push(arguments) };
+        var js, fjs = d.getElementsByTagName(s)[0];
+        js = d.createElement(s);
+        js.id = id;
+        js.async = 1;
+        js.src = "https://cdn.webpushr.com/app.min.js";
+        fjs.parentNode.appendChild(js);
+        }(window, document, 'script', 'webpushr-jssdk'));
+
+        webpushr('setup', {
+        'key': 'BC2Mz-8Xgdc2VW4vFnwNfS4x0w0waPBGqPr6CGrJY-DRgFG7YNWQXjaiqikZeIrHkvuhepGdn9fWJg-vVG_Jm4Q',
+        'sw': undefined
+        });
+        </script></body>
+</html>
